@@ -32,7 +32,9 @@
                 </div>
                 <div class="card-body bg-light">
                   <form>
+                    
                     <div class="row gx-2">
+                      
                       <div class="col-6 mb-3">
                         <label class="form-label" for="event-name">Primer Nombre</label>
                         <input class="form-control" id="event-name" type="text" placeholder="Event Title" />
@@ -118,6 +120,30 @@
                       <div class="col-sm-3 mb-3">
                         <label class="form-label" for="event-country">Activo</label>
                         <input class="form-control" id="event-country" type="text" placeholder="Ej. " />
+                      </div>
+                      <div class="col-12 mb-3">
+                        <div class="">
+                          <div class="row" data-dropzone="data-dropzone" data-options='{"maxFiles":1,"data":[{"name":"avatar-4.jpg","size":"54kb","url":"/images/user"}]}'>
+                            <div class="fallback">
+                              <input type="file" name="file" />
+                            </div>
+                            <div class="col-md-auto">
+                              <div class="dz-preview dz-preview-single">
+                                <div class="dz-preview-cover d-flex align-items-center justify-content-center mb-3 mb-md-0">
+                                  <div class="avatar avatar-4xl"><img class="rounded-circle" src="/images/user/avatar-4.jpg" alt="..." data-dz-thumbnail="data-dz-thumbnail" /></div>
+                                  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md">
+                              <div class="dz-message dropzone-area px-2 py-3" data-dz-message="data-dz-message">
+                                <div class="text-center"><img class="me-2" src="images/cloud-upload.svg" width="25" alt="" />Upload your profile picture
+                                  <p class="mb-0 fs--1 text-400">Upload a 300x300 jpg image with <br />a maximum size of 400KB</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       <div class="col-12">
                         <label class="form-label" for="event-direccion">Direccion</label>
