@@ -5,16 +5,8 @@
 <a class="navbar-brand me-1 me-sm-3" href="{{ url('Home') }}">
   <div class="row gx-0 align-items-center">
     
-    @if (Auth::id() == '3')
-      <h6 class="text-primary-inn fs--1 mb-0">Inventario de </h6>
-      <h4 class="text-primary-inn fw-bold mb-0">MATERIA <span class="text-info-inn fw-medium">PRIMA</span></h4>
-    @elseif (Auth::id() == '2')
-      <h6 class="text-primary-inn fs--1 mb-0">Inventario de </h6>
-      <h4 class="text-primary-inn fw-bold mb-0">PRODUCTO <span class="text-info-inn fw-medium">TERMINADO</span></h4>
-    @else
-      <h6 class="text-primary-inn fs--1 mb-0">Inventario de </h6>
-      <h4 class="text-primary-inn fw-bold mb-0">INNOVA <span class="text-info-inn fw-medium">INDUSTRIA</span></h4>
-    @endif
+      <h6 class="text-primary-inn fs--1 mb-0">Gestor de </h6>
+      <h4 class="text-primary-inn fw-bold mb-0">PLANILLAS <span class="text-info-inn fw-medium">GPlanilla</span></h4>
     
     
   </div>

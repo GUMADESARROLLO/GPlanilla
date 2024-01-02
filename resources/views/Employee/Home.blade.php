@@ -15,7 +15,7 @@
             <div class="card-header">
             <div class="row flex-between-center">
                     <div class="col-4 col-sm-auto d-flex align-items-center pe-0">
-                    <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0">Master de Articulos</h5>
+                    <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0"></h5>
                     </div>
                     <div class="col-8 col-sm-auto text-end ps-2">
                         <div id="table-customers-replace-element">
@@ -40,9 +40,22 @@
               <table class="table table-sm table-striped fs--1 mb-0 overflow-hidden" id="tbl_productos">
                     <thead class="bg-200 text-900">
                         <tr>
-                            <th class="sort pe-1 align-middle white-space-nowrap">ARTICULO</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">EXISITENCIA</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">ULTIMA MODIFICACION</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">NOMBRE</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">TELEFONO</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">CEDULA</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap"># INSS </th>\
+                            <th class="sort pe-1 align-middle white-space-nowrap">CEDULA</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">EMAIL</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">DIRECCION</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">VACACIONES</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">FECHA ENTRADA</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">FECHA SALIDA</th>                            
+                            <th class="sort pe-1 align-middle white-space-nowrap">GENERO</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">NACIONALIDAD</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">TALLA CAMISA</th>
+                            <th class="sort pe-1 align-middle white-space-nowrap">TALLA PANTALON</th>                            
+                            <th class="sort pe-1 align-middle white-space-nowrap">ACTIVO</th>   
+
                         </tr>
                     </thead>
                     <tbody id="table-customers-body">
@@ -153,7 +166,7 @@
     <div class="modal fade" id="modal_kardex" tabindex="-1" >
           <div class="modal-dialog">
             <div class="modal-content border">
-              <form autocomplete="off" method="POST" novalidate=""  action="{{ route('getKardex') }}">@csrf
+              <form autocomplete="off" method="POST" novalidate=""  action="{{ route('Home') }}">@csrf
                 <div class="modal-header px-card bg-light border-bottom-0">
                   <h5 class="modal-title">Filtro de Kardex</h5>
                   <button class="btn-close me-n1" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -232,7 +245,7 @@
                     
                     <div class="card ms-3">                        
                         <div class="card-body ">
-                        <form class="row g-2 needs-validation" novalidate="" method="POST" action="{{ route('GuardarCantidad') }}">
+                        <form class="row g-2 needs-validation" novalidate="" method="POST" action="{{ route('Home') }}">
                         @csrf
                         <div class="col-md-12 d-none">
                             <input class="form-control"  type="text" id='art_code' name="art_code" >

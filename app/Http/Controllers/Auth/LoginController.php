@@ -59,7 +59,7 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
         $user = $request->username;
-        $queryResult = DB::table('users')->where('username', $user)->where('activo', 'S')->pluck('id');
+        $queryResult = DB::table('users')->where('username', $user)->where('active', 1)->pluck('id');
         if (!$queryResult->isEmpty()) {
             if ($this->attemptLogin($request)) {
 
@@ -67,12 +67,12 @@ class LoginController extends Controller
                 $Bodegas = '';
 
                 foreach($Info_usuario as $user)
-                {
-                    $request->session()->put('name_session', $user->nombre);
-                    $request->session()->put('name_rol', $user->RolName->descripcion);
-                    $request->session()->put('rol', $user->id_rol);  
-                    $request->session()->put('Bodegas', $Bodegas);                 
+                {                
+                    $request->session()->put('name_session', $user->username);
+                    $request->session()->put('name_rol', $user->rol->role_name);
+                    $request->session()->put('rol', $user->role_id);               
                 }
+
                 return $this->sendLoginResponse($request);
             }
         }

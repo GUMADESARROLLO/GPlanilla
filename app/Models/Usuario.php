@@ -12,17 +12,13 @@ class Usuario extends Model {
 
     public function rol()
     {
-        return $this->belongsTo(Roles::class, 'id_rol');
+        return $this->belongsTo(Roles::class, 'role_id','id');
     }
 
-    public function RolName()
-    {
-        return $this->hasOne('App\Models\Roles','id','id_rol');
-    }
 
     public static function getUsuarios()
     {
-        return Usuario::where('activo','S')->get();
+        return Usuario::where('active',1)->get();
     }
     public static function SaveUsuario(Request $request) {
         if ($request->ajax()) {

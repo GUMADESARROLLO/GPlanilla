@@ -12,11 +12,11 @@ class Roles extends Model {
 
     public function users()
     {
-        return $this->hasMany(Usuario::class, 'id_rol');
+        return $this->hasMany(Usuario::class, 'id','role_id');
     }
 
     public static function getRoles()
     {
-        return Roles::where('activo','S')->get();
+        return Roles::where('active',1)->get();
     }
 }

@@ -57,7 +57,7 @@
 
                               </div>
                               <div class="flex-1 ms-3">
-                                <h6 class="mb-0 fw-semi-bold"><a class="text-900" href="#!" onclick="OpenModal({{$usuario}})">{{ strtoupper($usuario->nombre) }} ( {{$usuario->RolName->descripcion}} )</a></h6>
+                                <h6 class="mb-0 fw-semi-bold"><a class="text-900" href="#!" onclick="OpenModal({{$usuario}})">{{ strtoupper($usuario->nombre) }} ( {{$usuario->rol->role_name}} )</a></h6>
                                 <p class="text-500 fs--2 mb-0"><a class="text-700" href="#!" onclick="AsginarRuta({{$usuario}})">{{ strtoupper($usuario->username) }}</a></p>
                               </div>
                             </div>
@@ -128,7 +128,7 @@
                                 <select class="form-select" id="id_tipo_usuaro" name="label" required="required">
                                     <option value="" selected="selected">None</option>
                                     @foreach ($Roles as $Rol)
-                                    <option value="{{$Rol->id}}">{{strtoupper($Rol->descripcion)}}</option>
+                                    <option value="{{$Rol->id}}">{{strtoupper($Rol->role_name)}}</option>
                                     @endforeach
                                 </select>
                             </div>

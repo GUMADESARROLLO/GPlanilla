@@ -11,8 +11,8 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>INVENTARIO | INNOVA INDUSTRIA </title>
-    <link rel="shortcut icon" href="{{ url('images/ic-inn.png') }}" />
+    <title>GPLANILLA | GRUPO GUMA </title>
+    <link rel="shortcut icon" href="{{ url('images/ic-umk.png') }}" />
 
 
     <!-- ===============================================-->
