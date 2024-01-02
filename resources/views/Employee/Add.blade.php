@@ -123,7 +123,7 @@
                       </div>
                       <div class="col-12 mb-3">
                         <div class="">
-                          <div class="row" data-dropzone="data-dropzone" data-options='{"maxFiles":1,"data":[{"name":"avatar-4.jpg","size":"54kb","url":"/images/user"}]}'>
+                          <div class="row" data-dropzone="data-dropzone" data-options='{"maxFiles":1,"data":[{"name":"avatar-4.jpg","size":"54kb","url":"/images/user","acceptedFiles" : "image/jpeg,image/png,image/gif"}]}'>
                             <div class="fallback">
                               <input type="file" name="file" />
                             </div>
