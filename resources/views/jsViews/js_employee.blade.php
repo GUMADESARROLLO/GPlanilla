@@ -31,7 +31,7 @@
 
        
         $('#id_txt_buscar').on('keyup', function() {   
-            var vTableArticulos = $('#tbl_productos').DataTable();     
+            var vTableArticulos = $('#tbl_employee').DataTable();     
             vTableArticulos.search(this.value).draw();
         });
         $('#id_txt_excel').on('keyup', function() {    
@@ -58,7 +58,7 @@
             handleFileSelect(e)
         });
 
-        initTable('#tbl_productos');
+        initTable('#tbl_employee');
     });
 
   
@@ -110,6 +110,7 @@
         "destroy": true,
         "info": false,
         "bPaginate": true,
+        "responsive": true, 
         "order": [
             [0, "asc"]
         ],

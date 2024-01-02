@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 @section('metodosjs')
-@include('jsViews.js_articulos')
+@include('jsViews.js_employee')
 @endsection
 @section('content')
 
@@ -8,9 +8,10 @@
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
-      <div class="container-fluid" data-layout="container">
+    @include('layouts.nav-vertical')
+      <div class="container-fluid mt-7" data-layout="container">
         <div class="content">
-          @include('layouts.nav')
+          
           <div class="card" >
             <div class="card-header">
             <div class="row flex-between-center">
@@ -27,8 +28,11 @@
                                 <div class="input-group-text bg-transparent" id="btn_upload">
                                     <span class="fas fa-upload fs--1 text-success" ></span>
                                 </div>
-                                <div class="input-group-text bg-transparent" id="btn_kardex">
+                                <!-- <div class="input-group-text bg-transparent" id="btn_kardex">
                                     <span class="fas fa-boxes fs--1 text-success" ></span>
+                                </div> -->
+                                <div class="input-group-text bg-transparent" id="id_btn_new">
+                                <a  href="{{ route('AddEmployee') }}"> <span class="fa fa-plus fs--1 text-600"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -36,33 +40,49 @@
                 </div>
             </div>
             <div class="card-body p-0">
-              <div class="row flex-between-center mb-3">
-              <table class="table table-sm table-striped fs--1 mb-0 overflow-hidden" id="tbl_productos">
-                    <thead class="bg-200 text-900">
-                        <tr>
-                            <th class="sort pe-1 align-middle white-space-nowrap">NOMBRE</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">TELEFONO</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">CEDULA</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap"># INSS </th>\
-                            <th class="sort pe-1 align-middle white-space-nowrap">CEDULA</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">EMAIL</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">DIRECCION</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">VACACIONES</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">FECHA ENTRADA</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">FECHA SALIDA</th>                            
-                            <th class="sort pe-1 align-middle white-space-nowrap">GENERO</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">NACIONALIDAD</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">TALLA CAMISA</th>
-                            <th class="sort pe-1 align-middle white-space-nowrap">TALLA PANTALON</th>                            
-                            <th class="sort pe-1 align-middle white-space-nowrap">ACTIVO</th>   
-
-                        </tr>
+                <div class="table-responsive scrollbar">
+                <table class="table table-hover table-striped overflow-hidden"  id="tbl_employee">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Contrato</th>
+                        <th scope="col">Vacaciones</th>
+                        <th class="text-end" scope="col">Actions</th>
+                    </tr>
                     </thead>
-                    <tbody id="table-customers-body">
-             
+                    <tbody>
+                        @for ($i = 1; $i <= 10; $i++)
+                        <tr class="align-middle">
+                            <td class="text-nowrap">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar avatar-xl">
+                                <img class="rounded-circle" src="/images/user/avatar-4.jpg" alt="" />
+                                </div>
+                                <div class="ms-2">Ricky Antony</div>
+                            </div>
+                            </td>
+                            <td class="text-nowrap">ricky@example.com</td>
+                            <td class="text-nowrap">(201) 200-1851</td>
+                            <td class="text-nowrap">2392 Main Avenue, Penasauka</td>
+                            <td><span class="badge badge rounded-pill d-block p-2 badge-soft-success">Contrato {{$i}}<span class="ms-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
+                            </td>
+                            <td class="text-end">99</td>
+                            <td class="text-end">
+                            <div>
+                                <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
+                                <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"><span class="text-500 fas fa-trash-alt"></span></button>
+                            </div>
+                            </td>
+                        </tr>
+                        @endfor     
                     </tbody>
-                    </table>
-              </div>
+                </table>
+                </div>
+
+
             </div>
             <div class="card-footer">
               
@@ -73,7 +93,7 @@
         <div class="modal fade" id="modal_upload" tabindex="-1" role="dialog" aria-labelledby="authentication-modal-label" aria-hidden="true">
           <div class="modal-dialog modal-xl mt-6" role="document">
             <div class="modal-content border-0">
-              <div class="modal-header px-5 position-relative modal-shape-header bg-shape-inn">
+              <div class="modal-header px-5 position-relative modal-shape-header bg-shape-umk">
                 <div class="position-relative z-index-1 light">
                   <h4 class="mb-0 text-white" id="id_titulo_modal"> Carga via excel.</h4>
                 </div>
@@ -150,7 +170,7 @@
                         </table>  
                     </div>
                   </div>
-                  <button class="btn btn-bg-inn btn-primary d-block w-100 mt-3" id="id_send_data_excel" type="submit" name="submit">Cargar</button>
+                  <button class="btn btn-bg-umk btn-primary d-block w-100 mt-3" id="id_send_data_excel" type="submit" name="submit">Cargar</button>
                 </div>                                 
                   
               </div>
@@ -193,7 +213,7 @@
     <div class="modal fade" id="modal_new_product" tabindex="-1" >
         <div class="modal-dialog modal-xl">
             <div class="modal-content border-0">
-                <div class="modal-header px-5 position-relative modal-shape-header bg-shape-inn">
+                <div class="modal-header px-5 position-relative modal-shape-header bg-shape-umk">
                     <div class="position-relative z-index-1 light">
                         <h4 class="mb-0 text-white" id="id_lbl_modal_kardex">KARDEX</h4>
                     </div>
@@ -268,7 +288,7 @@
                             <div class="input-group" >
                                 <input class="form-control" id="id_jumbos" type="date" name='dateEvent' value="{{date('Y-m-d')}}" placeholder="{{date('Y/m/d')}}" />
                             
-                                <button class="btn btn-bg-inn btn-primary" type="submit">Guardar</button>
+                                <button class="btn btn-bg-umk btn-primary" type="submit">Guardar</button>
                             </div>
                           </div>
                             <div class="mb-3">

@@ -5,8 +5,8 @@
 <a class="navbar-brand me-1 me-sm-3" href="{{ url('Home') }}">
   <div class="row gx-0 align-items-center">
     
-      <h6 class="text-primary-inn fs--1 mb-0">Gestor de </h6>
-      <h4 class="text-primary-inn fw-bold mb-0">PLANILLAS <span class="text-info-inn fw-medium">GPlanilla</span></h4>
+      <h6 class="text-primary-umk fs--1 mb-0">Gestor de </h6>
+      <h4 class="text-primary-umk fw-bold mb-0">PLANILLAS <span class="text-info-umk fw-medium">GPlanilla</span></h4>
     
     
   </div>
@@ -55,7 +55,8 @@
     </div>
 
   </li>
-  <li class="nav-item dropdown"><a class="nav-link pe-0" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <li class="nav-item dropdown">
+    <a class="nav-link pe-0" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       
     <div class="d-flex align-items-center position-relative">
       <div class="flex-1">
@@ -68,14 +69,20 @@
     </div>
     </a>
     <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
-      <div class="bg-white dark__bg-1000 rounded-2 py-2"> 
-        @if( Session::get('rol') == '1')
-          <a class="dropdown-item" href="{{ route('Usuarios') }}"> <span class="fas fa-user-tie me-1"></span>USUARIOS </a>
-          <div class="dropdown-divider"></div>
-        @endif
-        <a class="dropdown-item" href="{{ route('logout') }}"><span class="fas fa-sign-out-alt me-1"></span>Salir</a>
+      <div class="bg-white dark__bg-1000 rounded-2 py-2">
+        <a class="dropdown-item fw-bold text-warning" href="{{ route('AddEmployee') }}"><span class="far fa-id-card me-1"></span><span>Agregar</span></a>
+
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#!">OP01</a>
+        <a class="dropdown-item" href="#!">OP02</a>
+        <a class="dropdown-item" href="#!">OP03</a>
+
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{{ route('Usuarios') }}" >Usuarios</a>
+        <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
       </div>
     </div>
+    
   </li>
 </ul>
 </nav>

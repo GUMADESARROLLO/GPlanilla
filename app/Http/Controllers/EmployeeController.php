@@ -16,5 +16,15 @@ class EmployeeController extends Controller {
         return view('Employee.Home');
     }
 
+    public function Employee()
+    {        
+        return view('Employee.Home');
+    }
+
+    public function AddEmployee()
+    {
+        return view('Employee.Add');
+    }
+
     
 }  

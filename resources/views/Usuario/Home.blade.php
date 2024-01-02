@@ -8,9 +8,10 @@
 <!--    Main Content-->
 <!-- ===============================================-->
 <main class="main" id="top">
-    <div class="container-fluid" data-layout="container">
+@include('layouts.nav-vertical')
+    <div class="container-fluid mt-7" data-layout="container">
         <div class="content">
-            @include('layouts.nav')
+            
 
             <div class="col-xxl-12">
               <div class="card h-100">

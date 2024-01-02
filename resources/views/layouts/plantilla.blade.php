@@ -44,22 +44,22 @@
         linkRTL.setAttribute('disabled', true);
     </script>
     <style>
-        .bg-shape-inn {
+        .bg-shape-umk {
             position: relative;
             overflow: hidden;
-            background-color: #831F82;
+            background-color: #273b7a;
         }
-        .btn-bg-inn{
-            background-color: #831F82 !important;
-            border-color: #831F82 !important;
+        .btn-bg-umk{
+            background-color: #273b7a !important;
+            border-color: #273b7a !important;
         }
-        .text-primary-inn {
+        .text-primary-umk {
             --falcon-text-opacity: 1;
-            color: #831F82 !important;
+            color: #273b7a !important;
         }
-        .text-info-inn {
+        .text-info-umk {
             --falcon-text-opacity: 1;
-            color: #F39200 !important;
+            color: #1fb2e7 !important;
         }
         .border-table{
             border: 1px solid var(--falcon-border-color);
