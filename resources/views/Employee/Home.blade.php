@@ -32,7 +32,7 @@
                                     <span class="fas fa-boxes fs--1 text-success" ></span>
                                 </div> -->
                                 <div class="input-group-text bg-transparent" id="id_btn_new">
-                                <a  href="{{ route('AddEmployee') }}"> <span class="fa fa-plus fs--1 text-600"></span></a>
+                                    <a  href="{{ route('AddEmployee') }}"> <span class="fa fa-plus fs--1 text-600"></span></a>
                                 </div>
                             </div>
                         </div>

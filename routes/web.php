@@ -16,13 +16,17 @@ Auth::routes();
 Route::get('/', 'Auth\LoginController@showLoginForm')->name("Init");
 Route::get('/logout', 'Auth\LoginController@logout');
 
+
+
 Route::get('Home', 'EmployeeController@getHome')->name('Home');
 Route::get('AddEmployee', 'EmployeeController@AddEmployee')->name('AddEmployee');
-
 Route::get('Employee', 'EmployeeController@Employee')->name('Employee');
 
 Route::get('Usuarios', 'UsuarioController@getUsuarios')->name('Usuarios');
 Route::post('SaveUsuario', 'UsuarioController@SaveUsuario')->name('SaveUsuario');
 Route::post('DeleteUsuario', 'UsuarioController@DeleteUsuario')->name('DeleteUsuario');
+
+
+Route::get('Catalogos', 'CatalogoController@getCatalogos')->name('Catalogos');
 
 
