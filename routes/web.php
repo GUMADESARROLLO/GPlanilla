@@ -29,4 +29,6 @@ Route::post('DeleteUsuario', 'UsuarioController@DeleteUsuario')->name('DeleteUsu
 
 Route::get('Catalogos', 'CatalogoController@getCatalogos')->name('Catalogos');
 
+Route::get('Requests', 'RequestsController@getRequests')->name('Requests');
+
 
