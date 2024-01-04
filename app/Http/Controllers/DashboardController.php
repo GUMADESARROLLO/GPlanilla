@@ -3,8 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Articulos;
 use Illuminate\Http\Request;
-use App\Models\Kardex;
-use App\Models\Clasificacion;
+
 
 class DashboardController extends Controller {
     public function __construct()

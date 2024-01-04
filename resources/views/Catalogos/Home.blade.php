@@ -46,7 +46,7 @@
                             <div class="input-group">
                               <input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
                               <div class="input-group-text bg-transparent"><span class="fa fa-search fs--1 text-600"></span></div>
-                              <div class="input-group-text bg-transparent"><span class="fa fa-plus fs--1 text-600"></span></div>
+                              <div class="input-group-text bg-transparent" onClick="MSG('Contrato')"><span class="fa fa-plus fs--1 text-600" ></span></div>
                             </div>
                           </div>
                         </div>
@@ -60,23 +60,23 @@
                                 </tr>
                               </thead>
                               <tbody class="list">
-                                @for ($i = 1; $i <= 10; $i++)
+                                @foreach($Contract as $c)
                                 <tr class="btn-reveal-trigger">
                                   <td class="align-middle white-space-nowrap path">
                                     <div class="d-flex align-items-center position-relative">                                   
                                       <div class="flex-1">
-                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Contrato {{$i}}</a></h6>
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">{{$c->contract_type_name}}</a></h6>
                                       </div>
                                     </div>
                                   </td>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
-                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
-                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"><span class="text-500 fas fa-trash-alt"></span></button>
+                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edit({{$c}})"><span class="text-500 fas fa-edit"></span></button>
+                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover" onClick="Remover({{$c->id_contract_type}},1)"><span class="text-500 fas fa-trash-alt"></span></button>
                                   </div>
                                   </td>
                                 </tr>
-                                @endfor     
+                                @endforeach     
                               </tbody>
                             </table>
                           </div>
@@ -108,7 +108,7 @@
                             <div class="input-group">
                               <input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
                               <div class="input-group-text bg-transparent"><span class="fa fa-search fs--1 text-600"></span></div>
-                              <div class="input-group-text bg-transparent"><span class="fa fa-plus fs--1 text-600"></span></div>
+                              <div class="input-group-text bg-transparent" onClick="MSG('Unidad de Negocio')"><span class="fa fa-plus fs--1 text-600"></span></div>
                             </div>
                           </div>
                         </div>
@@ -122,23 +122,23 @@
                                 </tr>
                               </thead>
                               <tbody class="list">
-                                @for ($i = 1; $i <= 3; $i++)
+                                @foreach($Companys as $c)
                                 <tr class="btn-reveal-trigger">
                                   <td class="align-middle white-space-nowrap path">
                                     <div class="d-flex align-items-center position-relative">                                   
                                       <div class="flex-1">
-                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Unidades {{$i}}</a></h6>
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">{{$c->company_name}}</a></h6>
                                       </div>
                                     </div>
                                   </td>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
-                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
-                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"><span class="text-500 fas fa-trash-alt"></span></button>
+                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edit({{$c}})"><span class="text-500 fas fa-edit"></span></button>
+                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover" onClick="Remover({{$c->id_compy}},2)" ><span class="text-500 fas fa-trash-alt"></span></button>
                                   </div>
                                   </td>
                                 </tr>
-                                @endfor     
+                                @endforeach     
                               </tbody>
                             </table>
                           </div>
@@ -169,7 +169,7 @@
                             <div class="input-group">
                               <input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
                               <div class="input-group-text bg-transparent"><span class="fa fa-search fs--1 text-600"></span></div>
-                              <div class="input-group-text bg-transparent"><span class="fa fa-plus fs--1 text-600"></span></div>
+                              <div class="input-group-text bg-transparent" id="btn_open_form"><span class="fa fa-plus fs--1 text-600"></span></div>
                             </div>
                           </div>
                         </div>
@@ -183,24 +183,24 @@
                                 </tr>
                               </thead>
                               <tbody class="list">
-                                @for ($i = 1; $i <= 10; $i++)
+                                @foreach($Department as $d)
                                 <tr class="btn-reveal-trigger">
                                   <td class="align-middle white-space-nowrap path">
                                     <div class="d-flex align-items-center position-relative">                                   
                                       <div class="flex-1">
-                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Departamento {{$i}}</a></h6>
-                                          <p class="text-500 fs--2 mb-0">Unidad</p>
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">{{$d->department_name}}</a></h6>
+                                          <p class="text-500 fs--2 mb-0">{{$d->Company->company_name}}</p>
                                       </div>
                                     </div>
                                   </td>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
-                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
-                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"><span class="text-500 fas fa-trash-alt"></span></button>
+                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edtDepa({{$d}})"><span class="text-500 fas fa-edit"></span></button>
+                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover" onClick="Remover({{$d->id_department}},3)"><span class="text-500 fas fa-trash-alt"></span></button>
                                   </div>
                                   </td>
                                 </tr>
-                                @endfor     
+                                @endforeach     
                               </tbody>
                             </table>
                           </div>
@@ -231,7 +231,7 @@
                             <div class="input-group">
                               <input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
                               <div class="input-group-text bg-transparent"><span class="fa fa-search fs--1 text-600"></span></div>
-                              <div class="input-group-text bg-transparent"><span class="fa fa-plus fs--1 text-600"></span></div>
+                              <div class="input-group-text bg-transparent" id="btn_open_form_posi"><span class="fa fa-plus fs--1 text-600"></span></div>
                             </div>
                           </div>
                         </div>
@@ -245,24 +245,24 @@
                                 </tr>
                               </thead>
                               <tbody class="list">
-                                @for ($i = 1; $i <= 10; $i++)
+                                @foreach($Position as $p)
                                 <tr class="btn-reveal-trigger">
                                   <td class="align-middle white-space-nowrap path">
                                     <div class="d-flex align-items-center position-relative">                                   
                                       <div class="flex-1">
-                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Posicion {{$i}}</a></h6>
-                                          <p class="text-500 fs--2 mb-0">Unidad | Departamento | Posicion</p>
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="#!">{{$p->position_name}}</a></h6>
+                                          <p class="text-500 fs--2 mb-0">{{$p->Department->Company->company_name}} | {{$p->Department->department_name}}</p>
                                       </div>
                                     </div>
                                   </td>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
-                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
-                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"><span class="text-500 fas fa-trash-alt"></span></button>
+                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edtPosi({{$p}})" ><span class="text-500 fas fa-edit"></span></button>
+                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover" onClick="Remover({{$p->id_position}},4)" ><span class="text-500 fas fa-trash-alt"></span></button>
                                   </div>
                                   </td>
                                 </tr>
-                                @endfor     
+                                @endforeach     
                               </tbody>
                             </table>
                           </div>
@@ -292,7 +292,71 @@
               </div>
             </div>
         </div>
-        
+
+        <!-- INI MODAL ADD DEPARTAMENTO -->
+        <div class="modal fade" id="modal_form_depa" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content border">
+              
+                <div class="modal-header px-card bg-light border-bottom-0">
+                  <h5 class="modal-title">Nuevo Departamento</h5>  <span id="IdRow" >0</span>
+                  <button class="btn-close me-n1" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-card">
+                  <div class="mb-3">
+                    <label class="fs-0" for="eventLabel">Unidad De Negocio</label>
+                    <select class="form-select" id="edtCompany" name="label">
+                      <option value="" selected="selected">None</option>
+                      @foreach($Companys as $c)
+                      <option value="{{$c->id_compy}}">{{$c->company_name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="fs-0" for="eventTitle">Nombre</label>
+                    <input class="form-control" id="edtNombre" type="text" name="title" required="required" />
+                  </div>
+                  
+                </div>
+                <div class="card-footer d-flex justify-content-end align-items-center bg-light">
+                  <button class="btn btn-success px-4" id="save_depa" type="submit">Guardar</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- END MODAL ADD DEPARTAMENTO -->
+        <div class="modal fade" id="modal_form_posicion" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content border">
+                <div class="modal-header px-card bg-light border-bottom-0">
+                  <h5 class="modal-title">Agregar Posicion</h5> <span id="IdRow2" >0</span>
+                  <button class="btn-close me-n1" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-card">
+                  <div class="mb-3">
+                    <label class="fs-0" for="eventLabel">Departamento</label>
+                    <select class="form-select" id="sltDepa" name="label">
+                      <option value="" selected="selected">None</option>
+                      @foreach($Department as $d)
+                      <option value="{{$d->id_department}}">{{$d->department_name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="fs-0" for="edtNombrePosicion">Nombre</label>
+                    <input class="form-control" id="edtNombrePosicion" type="text" name="title" required="required" />
+                  </div>
+                  
+                </div>
+                <div class="card-footer d-flex justify-content-end align-items-center bg-light">
+                  <button class="btn btn-success px-4" id="save_posicion" type="submit">Guardar</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- INI MODAL ADD POSICIONES -->
+        <!-- END MODAL ADD POSICIONES -->
+
       </div>
     </main>
 

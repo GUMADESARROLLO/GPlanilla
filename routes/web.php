@@ -29,6 +29,9 @@ Route::post('DeleteUsuario', 'UsuarioController@DeleteUsuario')->name('DeleteUsu
 
 
 Route::get('Catalogos', 'CatalogoController@getCatalogos')->name('Catalogos');
+Route::post('AddCatalogo', 'CatalogoController@AddCatalogo')->name('AddCatalogo');
+Route::post('rmCatalogo', 'CatalogoController@rmCatalogo')->name('rmCatalogo');
+Route::post('UpdateCatalogo', 'CatalogoController@UpdateCatalogo')->name('UpdateCatalogo');
 
 Route::get('Requests', 'RequestsController@getRequests')->name('Requests');
 

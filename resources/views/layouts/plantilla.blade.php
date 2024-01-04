@@ -133,18 +133,8 @@
     <script src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @yield('metodosjs')
-    <script type="text/javascript">
+    <script src="{{ asset('js/Funciones.js') }}"></script>
 
-        function isNumberKey(evt){
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
-                return false;
-
-            return true;
-        }
-
-        
-    </script>
 
     
 </body>
