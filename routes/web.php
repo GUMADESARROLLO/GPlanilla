@@ -18,7 +18,8 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 
 
-Route::get('Home', 'EmployeeController@getHome')->name('Home');
+Route::get('Home', 'DashboardController@getDashboard')->name('Home');
+
 Route::get('AddEmployee', 'EmployeeController@AddEmployee')->name('AddEmployee');
 Route::get('Employee', 'EmployeeController@Employee')->name('Employee');
 

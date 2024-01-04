@@ -64,8 +64,19 @@
                               </thead>
                               <tbody class="list">
                                 @for ($i = 1; $i <= 10; $i++)
-                                <tr class="btn-reveal-trigger">
-                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">Nombre Completo del Colaborador {{$i}}</a></td>
+                                <tr class="btn-reveal-trigger">                                  
+                                  <td class="align-middle white-space-nowrap path">
+                                      <div class="d-flex align-items-center position-relative">
+                                      <div class="avatar avatar-2xl status-online">
+                                          <img class="rounded-circle" src="/images/user/avatar-4.jpg" alt="" />
+
+                                      </div>
+                                      <div class="flex-1 ms-3">
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Nombre Y Foto del Colaborador</a></h6>
+                                          <p class="text-500 fs--2 mb-0">Departamento | Posicion</p>
+                                      </div>
+                                      </div>
+                                  </td>
                                   <td class="align-middle white-space-nowrap path">mar., ene. 00, 2024</td>
                                   <td class="align-middle white-space-nowrap path">mar., ene. 00, 2024</td>
                                   <td class="align-middle white-space-nowrap path">mar., ene. 00, 2024</td>

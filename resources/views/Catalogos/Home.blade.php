@@ -62,7 +62,13 @@
                               <tbody class="list">
                                 @for ($i = 1; $i <= 10; $i++)
                                 <tr class="btn-reveal-trigger">
-                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">Contrato {{$i}}</a></td>
+                                  <td class="align-middle white-space-nowrap path">
+                                    <div class="d-flex align-items-center position-relative">                                   
+                                      <div class="flex-1">
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Contrato {{$i}}</a></h6>
+                                      </div>
+                                    </div>
+                                  </td>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
                                       <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
@@ -118,7 +124,13 @@
                               <tbody class="list">
                                 @for ($i = 1; $i <= 3; $i++)
                                 <tr class="btn-reveal-trigger">
-                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">Unidades {{$i}}</a></td>
+                                  <td class="align-middle white-space-nowrap path">
+                                    <div class="d-flex align-items-center position-relative">                                   
+                                      <div class="flex-1">
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Unidades {{$i}}</a></h6>
+                                      </div>
+                                    </div>
+                                  </td>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
                                       <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
@@ -173,7 +185,14 @@
                               <tbody class="list">
                                 @for ($i = 1; $i <= 10; $i++)
                                 <tr class="btn-reveal-trigger">
-                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">Departamento {{$i}}</a></td>
+                                  <td class="align-middle white-space-nowrap path">
+                                    <div class="d-flex align-items-center position-relative">                                   
+                                      <div class="flex-1">
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Departamento {{$i}}</a></h6>
+                                          <p class="text-500 fs--2 mb-0">Unidad</p>
+                                      </div>
+                                    </div>
+                                  </td>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
                                       <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
@@ -221,14 +240,21 @@
                             <table class="table fs--1 mb-0 overflow-hidden">
                               <thead class="bg-200 text-900">
                                 <tr>
-                                  <th class="sort pe-1 align-middle white-space-nowrap" data-sort="path">Posicion</th>
+                                  <th class="sort pe-1 align-middle white-space-nowrap" data-sort="path">Descripcion</th>
                                   <th class="sort pe-card align-middle white-space-nowrap text-end" data-sort="exitRate">Acciones</th>
                                 </tr>
                               </thead>
                               <tbody class="list">
                                 @for ($i = 1; $i <= 10; $i++)
                                 <tr class="btn-reveal-trigger">
-                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">Posicion {{$i}}</a></td>
+                                  <td class="align-middle white-space-nowrap path">
+                                    <div class="d-flex align-items-center position-relative">                                   
+                                      <div class="flex-1">
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Posicion {{$i}}</a></h6>
+                                          <p class="text-500 fs--2 mb-0">Unidad | Departamento | Posicion</p>
+                                      </div>
+                                    </div>
+                                  </td>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
                                       <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
