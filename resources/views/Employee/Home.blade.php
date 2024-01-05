@@ -54,7 +54,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @for ($i = 1; $i <= 10; $i++)
+                        @foreach($Employee as $e)
                         <tr class="align-middle">
                             <td class="align-middle white-space-nowrap path">
                                 <div class="d-flex align-items-center position-relative">
@@ -63,25 +63,25 @@
 
                                 </div>
                                 <div class="flex-1 ms-3">
-                                    <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Nombre Y Foto del Colaborador</a></h6>
-                                    <p class="text-500 fs--2 mb-0">Departamento | Posicion</p>
+                                    <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="EditEmployee/{{$e->id_employee}}">{{$e->first_name }} {{$e->last_name}}</a></h6>
+                                    <p class="text-500 fs--2 mb-0">{{$e->Position->Department->Company->company_name}} | {{$e->Position->Department->department_name}} | {{$e->Position->position_name}}</p>
                                 </div>
                                 </div>
                             </td>
-                            <td class="text-nowrap">ricky@example.com</td>
-                            <td class="text-nowrap">(201) 200-1851</td>
-                            <td class="text-nowrap">2392 Main Avenue, Penasauka</td>
-                            <td><span class="badge badge rounded-pill d-block p-2 badge-soft-success">Contrato {{$i}}<span class="ms-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
+                            <td class="text-nowrap">{{$e->email }}</td>
+                            <td class="text-nowrap">{{$e->phone_number }}</td>
+                            <td class="text-nowrap">{{$e->address }}</td>
+                            <td><span class="badge badge rounded-pill d-block p-2 badge-soft-success">{{$e->Contract->contract_type_name }} <span class="ms-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
                             </td>
-                            <td class="text-end">99</td>
+                            <td class="text-end">{{number_format($e->vacation_balance,2) }}</td>
                             <td class="text-end">
                             <div>
-                                <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
-                                <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"><span class="text-500 fas fa-trash-alt"></span></button>
+                                <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="Editar({{$e->id_employee}})"><span class="text-500 fas fa-edit"></span></button>
+                                <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover" onClick="Remover({{$e->id_employee}})"><span class="text-500 fas fa-trash-alt"></span></button>
                             </div>
                             </td>
                         </tr>
-                        @endfor     
+                        @endforeach     
                     </tbody>
                 </table>
                 </div>

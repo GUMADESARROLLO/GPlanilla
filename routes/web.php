@@ -20,8 +20,14 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('Home', 'DashboardController@getDashboard')->name('Home');
 
-Route::get('AddEmployee', 'EmployeeController@AddEmployee')->name('AddEmployee');
 Route::get('Employee', 'EmployeeController@Employee')->name('Employee');
+Route::get('AddEmployee', 'EmployeeController@AddEmployee')->name('AddEmployee');
+Route::post('SaveEmployee', 'EmployeeController@SaveEmployee')->name('SaveEmployee');
+Route::post('UpdateEmployee', 'EmployeeController@UpdateEmployee')->name('UpdateEmployee');
+Route::post('rmEmployee', 'EmployeeController@rmEmployee')->name('rmEmployee');
+
+Route::get('/EditEmployee/{id_employee}', 'EmployeeController@editEmployee')->name('EditEmployee');
+
 
 Route::get('Usuarios', 'UsuarioController@getUsuarios')->name('Usuarios');
 Route::post('SaveUsuario', 'UsuarioController@SaveUsuario')->name('SaveUsuario');

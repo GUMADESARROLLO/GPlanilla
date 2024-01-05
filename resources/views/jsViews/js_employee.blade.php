@@ -1,7 +1,10 @@
 <script type="text/javascript">
     const startOfMonth = moment().startOf('month').format('YYYY-MM-DD');
     const endOfMonth   = moment().subtract(0, "days").format("YYYY-MM-DD");
-
+    $('[data-mask]').inputmask()
+    $('#txt_email').inputmask({
+        alias: 'email'
+    });
 
     var Selectors = {
         TABLE_SETTING: '#modal_new_product',
@@ -60,6 +63,58 @@
 
         initTable('#tbl_employee');
     });
+    function Editar(id) {
+        window.location ="EditEmployee/" + id
+    }
+
+    function Remover(id){
+        Swal.fire({
+            title: '¿Estas Seguro de remover el registro  ?' + id,
+            text: "¡Se removera la informacion permanentemente!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si!',
+            target: document.getElementById('mdlMatPrima'),
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                $.ajax({
+                    url: "rmEmployee",
+                    data: {
+                        id_  : id,
+                        _token  : "{{ csrf_token() }}" 
+                    },
+                    type: 'post',
+                    async: true,
+                    success: function(response) {
+                        if(response){
+                            Swal.fire({
+                                title: 'Registro Removido Correctamente ' ,
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'OK'
+                                }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                    }
+                                })
+                            }
+                        },
+                    error: function(response) {
+                        //Swal.fire("Oops", "No se ha podido guardar!", "error");
+                    }
+                    }).done(function(data) {
+                        //CargarDatos(nMes,annio);
+                        location.reload();
+                    });
+                },
+            allowOutsideClick: () => !Swal.isLoading()
+        });
+
+    }
 
   
     function OpenModal(Articulo,Event){
