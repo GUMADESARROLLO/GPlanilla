@@ -44,7 +44,7 @@
                             <div class="input-group">
                               <input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
                               <div class="input-group-text bg-transparent"><span class="fa fa-search fs--1 text-600"></span></div>
-                              <div class="input-group-text bg-transparent"><span class="fa fa-plus fs--1 text-600" id="btn_open_modal_request"></span></div>
+                              <div class="input-group-text bg-transparent" id="btn_open_modal_request"><span class="fa fa-plus fs--1 text-600" ></span></div>
                             </div>
                           </div>
                         </div>
@@ -63,7 +63,8 @@
                                 </tr>
                               </thead>
                               <tbody class="list">
-                                @for ($i = 1; $i <= 10; $i++)
+
+                                @foreach($RequestsVacation as $rv)
                                 <tr class="btn-reveal-trigger">                                  
                                   <td class="align-middle white-space-nowrap path">
                                       <div class="d-flex align-items-center position-relative">
@@ -72,16 +73,16 @@
 
                                       </div>
                                       <div class="flex-1 ms-3">
-                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Nombre Y Foto del Colaborador</a></h6>
-                                          <p class="text-500 fs--2 mb-0">Departamento | Posicion</p>
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">{{$rv->Employee->first_name}} {{$rv->Employee->last_name}}</a></h6>
+                                          <p class="text-500 fs--2 mb-0">{{$rv->Employee->Position->Department->Company->company_name}} | {{$rv->Employee->Position->Department->department_name}} | {{$rv->Employee->Position->position_name}}</p>
                                       </div>
                                       </div>
                                   </td>
-                                  <td class="align-middle white-space-nowrap path">mar., ene. 00, 2024</td>
-                                  <td class="align-middle white-space-nowrap path">mar., ene. 00, 2024</td>
-                                  <td class="align-middle white-space-nowrap path">mar., ene. 00, 2024</td>
-                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">1.18</a></td>
-                                  <td><span class="badge badge rounded-pill d-block p-2 badge-soft-success">Contrato {{$i}}<span class="ms-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
+                                  <td class="align-middle white-space-nowrap path">{{$rv->start_date}} mar., ene. 00, 2024</td>
+                                  <td class="align-middle white-space-nowrap path">{{$rv->end_date}} mar., ene. 00, 2024</td>
+                                  <td class="align-middle white-space-nowrap path">{{$rv->return_date}} mar., ene. 00, 2024</td>
+                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">{{$rv->requested_days}}</a></td>
+                                  <td><span class="badge badge rounded-pill d-block p-2 badge-soft-success">{{$rv->Status->status_name}}<span class="ms-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
                                       <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
@@ -89,7 +90,7 @@
                                   </div>
                                   </td>
                                 </tr>
-                                @endfor     
+                                @endforeach    
                               </tbody>
                             </table>
                           </div>
@@ -121,7 +122,7 @@
                             <div class="input-group">
                               <input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
                               <div class="input-group-text bg-transparent"><span class="fa fa-search fs--1 text-600"></span></div>
-                              <div class="input-group-text bg-transparent"><span class="fa fa-plus fs--1 text-600"></span></div>
+                              <div class="input-group-text bg-transparent"><span class="fa fa-plus fs--1 text-600" onClick="MSG('Tipos')"></span></div>
                             </div>
                           </div>
                         </div>
@@ -135,17 +136,17 @@
                                 </tr>
                               </thead>
                               <tbody class="list">
-                                @for ($i = 1; $i <= 3; $i++)
+                                @foreach($RequestTypes as $rt)
                                 <tr class="btn-reveal-trigger">
-                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">Tipos {{$i}}</a></td>
+                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">{{$rt->type_name}}</a></td>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
-                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
-                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"><span class="text-500 fas fa-trash-alt"></span></button>
+                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edit({{$rt}})"><span class="text-500 fas fa-edit"></span></button>
+                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover" onClick="Remover({{$rt->id_request_type}},1)"><span class="text-500 fas fa-trash-alt"></span></button>
                                   </div>
                                   </td>
                                 </tr>
-                                @endfor     
+                                @endforeach     
                               </tbody>
                             </table>
                           </div>
@@ -176,7 +177,7 @@
                             <div class="input-group">
                               <input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
                               <div class="input-group-text bg-transparent"><span class="fa fa-search fs--1 text-600"></span></div>
-                              <div class="input-group-text bg-transparent"><span class="fa fa-plus fs--1 text-600"></span></div>
+                              <div class="input-group-text bg-transparent"><span class="fa fa-plus fs--1 text-600" onClick="MSG('Estados')"></span></div>
                             </div>
                           </div>
                         </div>
@@ -190,17 +191,17 @@
                                 </tr>
                               </thead>
                               <tbody class="list">
-                                @for ($i = 1; $i <= 10; $i++)
+                                @foreach ($RequestStatus as $rs)
                                 <tr class="btn-reveal-trigger">
-                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">Estados {{$i}}</a></td>
+                                  <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">{{$rs->status_name}}</a></td>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
-                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
-                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"><span class="text-500 fas fa-trash-alt"></span></button>
+                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edit({{$rs}})"><span class="text-500 fas fa-edit"></span></button>
+                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover" onClick="Remover({{$rs->id_request_status}},2)"><span class="text-500 fas fa-trash-alt"></span></button>
                                   </div>
                                   </td>
                                 </tr>
-                                @endfor     
+                                @endforeach     
                               </tbody>
                             </table>
                           </div>
@@ -231,52 +232,68 @@
               </div>
             </div>
         </div>
-        <div class="modal fade" id="modal_new_request" tabindex="-1">
+        <div class="modal fade" id="modal_new_request" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content border">
-              <form id="addEventForm" autocomplete="off">
                 <div class="modal-header px-card bg-light border-bottom-0">
-                  <h5 class="modal-title">Nueva Solicitud de Permiso</h5>
+                  <h5 class="modal-title">Solicitud de Permiso</h5>
                   <button class="btn-close me-n1" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-card">                  
+                <div class="modal-body p-card"> 
                   <div class="mb-3">
                     <label class="fs-0" for="eventStartDate">Inicia</label>
-                    <input class="form-control datetimepicker" id="eventStartDate" type="text" required="required" name="startDate" placeholder="yyyy/mm/dd" data-options='{"static":"true","enableTime":"true","dateFormat":"Y-m-d"}' />
+
+                    <select class="form-select js-choice" id="list_employee" size="1" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'>
+                      <option value="">Colaboradores ...</option>
+                      @foreach($Employee as $e)
+                      <option value="{{$e->id_employee}}">{{$e->first_name}} {{$e->last_name}}</option>
+                      @endforeach
+                    </select>
+                  </div>                 
+                  <div class="mb-3">
+                    <label class="fs-0" for="eventStartDate">Inicia</label>
+                    <div class="input-group"><span class="input-group-text "><span class="far fa-calendar-alt"></span></span>
+                      <input class="form-control datetimepicker" id="date_ini" type="text" required="required" name="startDate" placeholder="yyyy/mm/dd" data-options='{"static":"true","enableTime":"false","dateFormat":"Y-m-d"}' />
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label class="fs-0" for="eventEndDate">Termina</label>
-                    <input class="form-control datetimepicker" id="eventEndDate" type="text" name="endDate" placeholder="yyyy/mm/dd" data-options='{"static":"true","enableTime":"true","dateFormat":"Y-m-d"}' />
+                    <div class="input-group"><span class="input-group-text "><span class="far fa-calendar-alt"></span></span>
+                      <input class="form-control datetimepicker" id="date_end" type="text" name="endDate" placeholder="yyyy/mm/dd" data-options='{"static":"true","enableTime":"false","dateFormat":"Y-m-d"}' />
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label class="fs-0" for="eventReturnDate">Regresa</label>
-                    <input class="form-control datetimepicker" id="eventReturnDate" type="text" name="retunrDate" placeholder="yyyy/mm/dd" data-options='{"static":"true","enableTime":"true","dateFormat":"Y-m-d"}' />
+                    <div class="input-group"><span class="input-group-text "><span class="far fa-calendar-alt"></span></span>
+                      <input class="form-control datetimepicker" id="date_return" type="text" name="retunrDate" placeholder="yyyy/mm/dd" data-options='{"static":"true","enableTime":"false","dateFormat":"Y-m-d"}' />
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label class="fs-0" for="eventValDay">Tipo de Solicitud</label>
-                    <select class="form-select" id="eventValDay" name="label">
-                      <option value="" selected="selected"> Tipo de Solicitud</option>
-                    </select>
+                    <div class="input-group"><span class="input-group-text "><span class="far fa-clipboard"></span></span>
+                      <select class="form-select" id="list_type" name="label">                      
+                        @foreach($RequestTypes as $rt)
+                        <option value="{{$rt->id_request_type}}"> {{$rt->type_name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
                   </div>
                   <div class="mb-3">
-                    <label class="fs-0" for="eventValDay">Cantidad de dias Solicitados</label>
-                    <select class="form-select" id="eventValDay" name="label">
-                      <option value="" selected="selected"> 1 / 2</option>
-                      <option value="" > 1</option>
-                      <option value="" >2</option>
-                    </select>
+                    <label class="fs-0" for="eventValDay">Cantidad de dias Solicitados</label>                    
+                    <div class="input-group"><span class="input-group-text "><span class="fas fa-hospital-alt"></span></span>
+                        <input class="form-control" id="cant_day" type="text" name="cant_day" disabled="" placeHolder="0.00">
+                      </div>
                   </div>
                  
                   <div class="mb-3">
                     <label class="fs-0" for="eventDescription">Observacion:</label>
-                    <textarea class="form-control" rows="3" name="description" id="eventDescription"></textarea>
+                    <textarea class="form-control" rows="3" name="description" id="observation" ></textarea>
                   </div>
                   
                 </div>
                 <div class="card-footer d-flex justify-content-end align-items-center bg-light">
-                  <button class="btn btn-primary px-4" type="submit">Solcitar</button>
+                  <button class="btn btn-primary px-4" type="text" id="btn_save_request">Solcitar</button>
                 </div>
-              </form>
             </div>
           </div>
         </div>

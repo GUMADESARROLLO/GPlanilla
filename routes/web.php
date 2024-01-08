@@ -40,5 +40,9 @@ Route::post('rmCatalogo', 'CatalogoController@rmCatalogo')->name('rmCatalogo');
 Route::post('UpdateCatalogo', 'CatalogoController@UpdateCatalogo')->name('UpdateCatalogo');
 
 Route::get('Requests', 'RequestsController@getRequests')->name('Requests');
+Route::post('SaveTypeRequest', 'RequestsController@SaveTypeRequest')->name('SaveTypeRequest');
+Route::post('rmRequests', 'RequestsController@rmRequests')->name('rmRequests');
+Route::post('UpdateRequest', 'RequestsController@UpdateRequest')->name('UpdateRequest');
+Route::post('SaveRequest', 'RequestsController@SaveRequest')->name('SaveRequest');
 
 

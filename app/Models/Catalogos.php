@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Exception;
 use Illuminate\Http\Request;
 
+
 class Catalogos extends Model {
     public $timestamps = false;
     public static function AddCatalogo(Request $request)
@@ -131,10 +132,7 @@ class Catalogos extends Model {
                         "department_id" =>  $Select,
                     ]);
                 }
-                foreach ($variable as $key => $value) {
-                    # code...
-                }
-               
+                
                 return $response;
                 
             } catch (Exception $e) {
