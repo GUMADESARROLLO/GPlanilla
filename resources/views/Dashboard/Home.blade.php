@@ -65,108 +65,50 @@
                 <div class="card shopping-cart-bar-min-height h-100">
                     <div class="card-header d-flex flex-between-center">
                     <h6 class="mb-0">Acumulacion por Departamento</h6>
-                    <div class="dropdown font-sans-serif btn-reveal-trigger">
+                    <div class="dropdown font-sans-serif btn-reveal-trigger invisible">
                         <button class="btn btn-link text-600 btn-sm dropdown-toggle dropdown-caret-none btn-reveal" type="button" id="dropdown-shopping-cart-bar" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--2"></span></button>
                         <div class="dropdown-menu dropdown-menu-end border py-2" aria-labelledby="dropdown-shopping-cart-bar"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Export</a>
                         <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!">Remove</a>
                         </div>
                     </div>
                     </div>
-                    <div class="card-body py-0 d-flex align-items-center h-100">
+                    <div class="card-body py-0 d-flex align-items-top h-100">
                     <div class="flex-1">
-                        <div class="row g-0 align-items-center pb-3">
-                        <div class="col pe-4">
-                            <div class="d-flex position-relative">
-                                <div class="flex-1"><a class="stretched-link" href="#!">
-                                    <h6 class="text-800 mb-0">Departamento</h6>
-                                </a>
-                                <p class="mb-0 fs--2 text-500">Unidad de Negoio</p>
-                                </div>
-                            </div>
-                            
-                            <div class="progress" style="height:5px">
-                            <div class="progress-bar rounded-3 bg-primary" role="progressbar" style="width: 50% " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="col-auto text-end">
-                            <p class="mb-0 text-900 font-sans-serif"><span class="me-1 fas fa-caret-up text-success"></span>43.6</p>
-                            <p class="mb-0 fs--2 text-500 fw-semi-bold"><span class ="text-600">0.00</span> % </p>
-                        </div>
-                        </div>
-                        <div class="row g-0 align-items-center pb-3 border-top pt-3">
-                        <div class="col pe-4">
-                            <div class="d-flex position-relative">
-                                <div class="flex-1"><a class="stretched-link" href="#!">
-                                    <h6 class="text-800 mb-0">Departamento</h6>
-                                </a>
-                                <p class="mb-0 fs--2 text-500">Unidad de Negoio</p>
-                                </div>
-                            </div>
-                            <div class="progress" style="height:5px">
-                            <div class="progress-bar rounded-3 bg-danger" role="progressbar" style="width: 25% " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="col-auto text-end">
-                            <p class="mb-0 text-900 font-sans-serif"><span class="me-1 fas fa-caret-up text-danger"></span>13.11</p>
-                            <p class="mb-0 fs--2 text-500 fw-semi-bold"><span class ="text-600">0.00</span> % </p>
-                        </div>
-                        </div>
-                        <div class="row g-0 align-items-center pb-3 border-top pt-3">
-                        <div class="col pe-4">
-                            <div class="d-flex position-relative">
-                                <div class="flex-1"><a class="stretched-link" href="#!">
-                                    <h6 class="text-800 mb-0">Departamento</h6>
-                                </a>
-                                <p class="mb-0 fs--2 text-500">Unidad de Negoio</p>
-                                </div>
-                            </div>                            
-                            <div class="progress" style="height:5px">
-                            <div class="progress-bar rounded-3 bg-primary" role="progressbar" style="width: 35% " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="col-auto text-end">
-                            <p class="mb-0 text-900 font-sans-serif"><span class="me-1 fas fa-caret-up text-success"></span>12.11</p>
-                            <p class="mb-0 fs--2 text-500 fw-semi-bold"><span class ="text-600">0.00</span> % </p>
-                        </div>
-                        </div>
-                        <div class="row g-0 align-items-center pb-3 border-top pt-3">
-                        <div class="col pe-4">                        
-                            <div class="d-flex position-relative">
-                                <div class="flex-1"><a class="stretched-link" href="#!">
-                                    <h6 class="text-800 mb-0">Departamento</h6>
-                                </a>
-                                <p class="mb-0 fs--2 text-500">Unidad de Negoio</p>
-                                </div>
-                            </div>
-                            <div class="progress" style="height:5px">
-                            <div class="progress-bar rounded-3 bg-primary" role="progressbar" style="width: 43% " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="col-auto text-end">
-                            <p class="mb-0 text-900 font-sans-serif"><span class="me-1 fas fa-caret-down text-danger"></span>43.6</p>
-                            <p class="mb-0 fs--2 text-500 fw-semi-bold"><span class ="text-600">0.00</span> % </p>
-                        </div>
-                        </div>
-                        <div class="row g-0 align-items-center pb-3 border-top pt-3">
-                        <div class="col pe-4">
-                            
-                            <div class="d-flex position-relative">
-                                <div class="flex-1"><a class="stretched-link" href="#!">
-                                    <h6 class="text-800 mb-0">Departamento</h6>
-                                </a>
-                                <p class="mb-0 fs--2 text-500">Unidad de Negoio</p>
-                                </div>
-                            </div>
 
-                            <div class="progress" style="height:5px">
-                            <div class="progress-bar rounded-3 bg-primary" role="progressbar" style="width: 60% " aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        @foreach($Department as $d)
+
+                        <div class="row g-0 align-items-center pb-3">
+                          <div class="col pe-4">
+                            <div class="d-flex position-relative">
+                                <div class="flex-1">
+                                  <a class="stretched-link" href="#!">
+                                    <h6 class="text-800 mb-0">{{$d->department_name}}</h6>
+                                  </a>
+                                  <p class="mb-0 fs--2 text-500">{{$d->Company->company_name}}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-auto text-end">
-                            <p class="mb-0 text-900 font-sans-serif"><span class="me-1 fas fa-caret-up text-success"></span>60.5</p>
+                            
+                            <div class="progress" style="height:5px">
+                              <div class="progress-bar rounded-3 bg-primary" 
+                                  role="progressbar" 
+                                  style="width: 5% " 
+                                  aria-valuenow="5" 
+                                  aria-valuemin="0" 
+                                  aria-valuemax="100">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-auto text-end">
+                            <p class="mb-0 text-900 font-sans-serif"><span class="me-1 fas fa-caret-up text-success"></span>{{number_format($d->sumVacationBalance(),2)}}</p>
                             <p class="mb-0 fs--2 text-500 fw-semi-bold"><span class ="text-600">0.00</span> % </p>
+                          </div>
                         </div>
-                        </div>
+                        @endforeach
+
+                        
+
+                        
                     </div>
                     </div>
                 </div>

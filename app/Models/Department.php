@@ -14,4 +14,20 @@ class Department extends Model {
     {
         return $this->belongsTo(Company::class, 'company_id','id_compy');
     }
+
+    public function employees()
+    {
+        return $this->hasManyThrough(
+            Employee::class,
+            Position::class,
+            'department_id',
+            'position_id',
+            'id_department',
+            'id_position'
+        )->where('tbl_employee.active', 1);
+    }
+    public function sumVacationBalance()
+    {
+        return $this->employees()->sum('vacation_balance');
+    }
 }

@@ -338,7 +338,7 @@
                     <select class="form-select" id="sltDepa" name="label">
                       <option value="" selected="selected">None</option>
                       @foreach($Department as $d)
-                      <option value="{{$d->id_department}}">{{$d->department_name}}</option>
+                      <option value="{{$d->id_department}}">{{$d->department_name}} - {{$d->Company->company_name}}</option>
                       @endforeach
                     </select>
                   </div>
