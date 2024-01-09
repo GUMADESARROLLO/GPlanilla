@@ -204,29 +204,29 @@
                         </tr>
                       </thead>
                       <tbody class="list">
-                      @for ($i = 1; $i <= 10; $i++)
+                      @foreach($RequestsVacation as $rv)
                         <tr class="btn-reveal-trigger">
                           <td class="align-middle white-space-nowrap path">
                             <div class="d-flex align-items-center position-relative">
-                              <div class="avatar avatar-2xl status-online">
+                              <div class="avatar avatar-2xl">
                                 <img class="rounded-circle" src="/images/user/avatar-4.jpg" alt="" />
 
                               </div>
                               <div class="flex-1 ms-3">
-                                <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">Nombre Y Foto del Colaborador</a></h6>
-                                <p class="text-500 fs--2 mb-0">Departamento | Posicion</p>
+                                <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="EditEmployee/{{$rv->employee_id}}">{{$rv->Employee->first_name}} {{$rv->Employee->last_name}}</a></h6>
+                                <p class="text-500 fs--2 mb-0">{{$rv->Employee->Position->Department->Company->company_name}} | {{$rv->Employee->Position->Department->department_name}} | {{$rv->Employee->Position->position_name}}</p>
                               </div>
                             </div>
                           </td>
-                          <td class="align-middle white-space-nowrap text-end">mar., ene. 00, 2024</td>
-                          <td class="align-middle white-space-nowrap text-end">mar., ene. 00, 2024</td>
-                          <td class="align-middle white-space-nowrap text-end">mar., ene. 00, 2024</td>
+                          <td class="align-middle white-space-nowrap path">{{ Date::parse($rv->start_date)->format('D, M d, Y')  }} </td>
+                          <td class="align-middle white-space-nowrap path">{{ Date::parse($rv->end_date)->format('D, M d, Y')}} </td>
+                          <td class="align-middle white-space-nowrap path">{{Date::parse($rv->return_date)->format('D, M d, Y')}} </td>
                           <td class="align-middle white-space-nowrap text-end">
-                            <span class="badge badge rounded-pill d-block p-2 badge-soft-success">Estado {{$i}}<span class="ms-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
+                            <span class="badge badge rounded-pill d-block p-2 {{$rv->Status->status_color}}">{{$rv->Status->status_name}}<span class="ms-1 {{$rv->Status->status_icon}}" data-fa-transform="shrink-2"></span></span>
                         </td>
-                          <td class="align-middle text-end ">1.18</td>
+                          <td class="align-middle text-end ">{{$rv->requested_days}}</td>
                         </tr>
-                        @endfor     
+                        @endforeach 
                       </tbody>
                     </table>
                   </div>

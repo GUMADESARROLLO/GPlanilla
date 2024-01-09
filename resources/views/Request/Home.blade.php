@@ -20,7 +20,7 @@
                 </div>
               </div>
               <div class="card theme-wizard mb-5">
-                <div class="card-header bg-light pt-3 pb-2">
+                <div class="card-header bg-light pt-2 pb-2">
                   <ul class="nav nav-pills mb-3" role="tablist" id="pill-tab1">
                     <li class="nav-item" role="presentation">
                       <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#id_tab_requests" type="button" role="tab"  aria-selected="true"><span class="fas fa-dollar-sign me-2" data-fa-transform="shrink-2"></span><span class="d-none d-md-inline-block fs--1">Solicitudes</span></button>
@@ -28,7 +28,7 @@
                     <li class="nav-item" role="presentation">
                       <button class="nav-link" data-bs-toggle="pill" data-bs-target="#id_tab_tipo" type="button" role="tab" aria-selected="false"><span class="fas fa-building me-2" data-fa-transform="shrink-2"></span><span class="d-none d-md-inline-block fs--1">Tipos</span></button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item" role="presentation" style="display:none">
                       <button class="nav-link" data-bs-toggle="pill" data-bs-target="#id_tab_estados" type="button" role="tab" aria-selected="false"><span class="fas fa-user-friends me-2" data-fa-transform="down-2 shrink-2"></span><span class="d-none d-md-inline-block fs--1">Estados</span></button>
                     </li>
                     
@@ -68,25 +68,27 @@
                                 <tr class="btn-reveal-trigger">                                  
                                   <td class="align-middle white-space-nowrap path">
                                       <div class="d-flex align-items-center position-relative">
-                                      <div class="avatar avatar-2xl status-online">
+                                      <div class="avatar avatar-2xl ">
                                           <img class="rounded-circle" src="/images/user/avatar-4.jpg" alt="" />
 
                                       </div>
                                       <div class="flex-1 ms-3">
-                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="../pages/user/profile.html">{{$rv->Employee->first_name}} {{$rv->Employee->last_name}}</a></h6>
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="EditEmployee/{{$rv->employee_id}}">{{$rv->Employee->first_name}} {{$rv->Employee->last_name}}</a></h6>
                                           <p class="text-500 fs--2 mb-0">{{$rv->Employee->Position->Department->Company->company_name}} | {{$rv->Employee->Position->Department->department_name}} | {{$rv->Employee->Position->position_name}}</p>
                                       </div>
                                       </div>
                                   </td>
-                                  <td class="align-middle white-space-nowrap path">{{$rv->start_date}} mar., ene. 00, 2024</td>
-                                  <td class="align-middle white-space-nowrap path">{{$rv->end_date}} mar., ene. 00, 2024</td>
-                                  <td class="align-middle white-space-nowrap path">{{$rv->return_date}} mar., ene. 00, 2024</td>
+                                  <td class="align-middle white-space-nowrap path">{{ Date::parse($rv->start_date)->format('D, M d, Y')  }} </td>
+                                  <td class="align-middle white-space-nowrap path">{{ Date::parse($rv->end_date)->format('D, M d, Y')}} </td>
+                                  <td class="align-middle white-space-nowrap path">{{Date::parse($rv->return_date)->format('D, M d, Y')}} </td>
                                   <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">{{$rv->requested_days}}</a></td>
-                                  <td><span class="badge badge rounded-pill d-block p-2 badge-soft-success">{{$rv->Status->status_name}}<span class="ms-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
+                                  <td>
+                                    <span class="badge badge rounded-pill d-block p-2 {{$rv->Status->status_color}}">{{$rv->Status->status_name}}<span class="ms-1 {{$rv->Status->status_icon}}" data-fa-transform="shrink-2"></span>
+                                  </span>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
-                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><span class="text-500 fas fa-edit"></span></button>
-                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"><span class="text-500 fas fa-trash-alt"></span></button>
+                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edit_request({{$rv}})"><span class="text-500 fas fa-edit"></span></button>
+                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"  onClick="Remover({{$rv->id_vacation_request}},3)"><span class="text-500 fas fa-trash-alt"></span></button>
                                   </div>
                                   </td>
                                 </tr>
@@ -241,9 +243,9 @@
                 </div>
                 <div class="modal-body p-card"> 
                   <div class="mb-3">
-                    <label class="fs-0" for="eventStartDate">Inicia</label>
+                    <label class="fs-0" for="eventStartDate">Colaborador</label><span id="id_form" class="invisible">0</span>
 
-                    <select class="form-select js-choice" id="list_employee" size="1" name="organizerSingle" data-options='{"removeItemButton":true,"placeholder":true}'>
+                    <select class="form-select" id="list_employee" >
                       <option value="">Colaboradores ...</option>
                       @foreach($Employee as $e)
                       <option value="{{$e->id_employee}}">{{$e->first_name}} {{$e->last_name}}</option>

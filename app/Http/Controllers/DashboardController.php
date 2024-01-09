@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Articulos;
 use Illuminate\Http\Request;
+use App\Models\RequestsVacation;
+use Jenssegers\Date\Date;
 
 
 class DashboardController extends Controller {
@@ -11,8 +13,10 @@ class DashboardController extends Controller {
         $this->middleware('auth');
     }
     public function getDashboard()
-    {        
-        return view('Dashboard.Home');
+    {      
+        Date::setLocale('es');  
+        $RequestsVacation = RequestsVacation::where('active',1)->get();
+        return view('Dashboard.Home', compact('RequestsVacation'));
     }
     
 }  

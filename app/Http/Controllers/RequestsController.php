@@ -8,6 +8,7 @@ use App\Models\RequestStatus;
 use App\Models\RequestsType;
 use App\Models\Employee;
 use App\Models\RequestsVacation;
+use Jenssegers\Date\Date;
 
 
 
@@ -18,6 +19,7 @@ class RequestsController extends Controller {
     }
     public function getRequests()
     {        
+        Date::setLocale('es');
         $Employee = Employee::where('active',1)->get();
         $RequestTypes = RequestsType::where('active',1)->get();  
         $RequestStatus = RequestStatus::where('active',1)->get();        

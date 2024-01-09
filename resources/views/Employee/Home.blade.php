@@ -58,7 +58,7 @@
                         <tr class="align-middle">
                             <td class="align-middle white-space-nowrap path">
                                 <div class="d-flex align-items-center position-relative">
-                                <div class="avatar avatar-2xl status-online">
+                                <div class="avatar avatar-2xl">
                                     <img class="rounded-circle" src="/images/user/avatar-4.jpg" alt="" />
 
                                 </div>

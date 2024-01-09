@@ -3,10 +3,12 @@ $(document).ready(function () {
     var Selectors = {
         MODAL_REQUEST: '#modal_new_request',        
     };
+    
 
     $("#btn_open_modal_request").click(function(){
         var obj = document.querySelector(Selectors.MODAL_REQUEST);
         var modal = new window.bootstrap.Modal(obj);
+        $("#id_form").text("0");
         modal.show();
     });
 
@@ -28,13 +30,15 @@ $(document).ready(function () {
             var list_type       = $("#list_type").val();
             var cant_day        = $("#cant_day").val();
             var observation     = $("#observation").val();
+            var IdRequest       = $("#id_form").text();
 
+            IdRequest      = isValue(IdRequest,0,true)   
             date_ini      = isValue(date_ini,'N/D',true)   
             date_end      = isValue(date_end,'N/D',true)    
             date_return   = isValue(date_return,'N/D',true)    
             list_type     = isValue(list_type,'N/D',true)    
             cant_day      = isValue(cant_day,'N/D',true)    
-            observation   = isValue(observation,'N/D',true)             
+            observation   = isValue(observation,'N/D',true)    
         
 
             if(date_ini ==='N/D'||date_end === 'N/D' || list_type ==='N/D'){
@@ -44,6 +48,7 @@ $(document).ready(function () {
                     url: "SaveRequest",
                     type: 'post',
                     data: {
+                        IdRequest_      : IdRequest,
                         employee_       : employee,
                         date_ini_       : date_ini,
                         date_end_       : date_end,
@@ -65,7 +70,7 @@ $(document).ready(function () {
                             confirmButtonText: 'OK'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    //location.reload();
+                                    location.reload();
                                 }   
                             })
                         }
@@ -74,7 +79,20 @@ $(document).ready(function () {
                         Swal.fire("Oops", "No se ha podido guardar!", "error");
                     }
                 }).done(function(data) {
-                    location.reload();
+                    if(response){
+                            Swal.fire({
+                            title: 'Correcto',
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'OK'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }   
+                            })
+                        }
                 });
 
             
@@ -204,6 +222,33 @@ function edit(o) {
             UpdateData(value,varModelo,varID)
         }
     })
+
+}
+
+function edit_request(o) {
+
+    
+
+    var obj = document.querySelector('#modal_new_request');
+    var modal = new window.bootstrap.Modal(obj);
+
+    $("#list_employee").val(o.employee_id).change();
+    //$('#id_select_articulo').selectpicker('val', row.codigo);
+    
+
+    $("#list_type").val(o.request_type_id).change();
+    $("#id_form").text(o.id_vacation_request);
+
+    $("#date_ini").val(o.start_date);   
+    $("#date_end").val(o.end_date);   
+    $("#date_return").val(o.return_date);
+    $("#cant_day").val(o.requested_days);
+    $("#observation").val(o.observation);
+
+    modal.show();
+
+    
+
 
 }
 

@@ -68,6 +68,10 @@ class RequestsVacation extends Model {
                     $response =  RequestStatus::where('id_request_status',  $Id)->update([
                         "active" => 0,
                     ]);
+                } elseif($Mdl == 3) {
+                    $response =  RequestsVacation::where('id_vacation_request',  $Id)->update([
+                        "active" => 0,
+                    ]);
                 }
                 
 
@@ -113,6 +117,7 @@ class RequestsVacation extends Model {
     {
             try {
                 DB::transaction(function () use ($request) {
+                    $IdRequest_          = $request->input('IdRequest_');
                     $employee_           = $request->input('employee_');
                     $date_ini_           = $request->input('date_ini_');
                     $date_end_           = $request->input('date_end_');
@@ -121,7 +126,8 @@ class RequestsVacation extends Model {
                     $cant_day_           = $request->input('cant_day_');
                     $observation_        = $request->input('observation_');
 
-                    RequestsVacation::insert([
+
+                    $datos_a_insertar = [
                         'employee_id'       => $employee_ ,
                         'start_date'        => $date_ini_ ,
                         'end_date'          => $date_end_ ,
@@ -130,7 +136,16 @@ class RequestsVacation extends Model {
                         'requested_days'    => $cant_day_ ,
                         'observation'       => $observation_ ,
                         'active'            => 1
-                    ]);
+                    ];
+
+                    if ($IdRequest_ > 0) {
+                        RequestsVacation::where('id_vacation_request',  $IdRequest_)->update($datos_a_insertar);
+                    } else {
+                        RequestsVacation::insert($datos_a_insertar);
+                    }
+                    
+
+                    
                 }); 
                 
             } catch (Exception $e) {
