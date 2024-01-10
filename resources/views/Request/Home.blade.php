@@ -68,8 +68,8 @@
                                 <tr class="btn-reveal-trigger">                                  
                                   <td class="align-middle white-space-nowrap path">
                                       <div class="d-flex align-items-center position-relative">
-                                      <div class="avatar avatar-2xl ">
-                                          <img class="rounded-circle" src="/images/user/avatar-4.jpg" alt="" />
+                                      <div class="avatar avatar-3xl ">
+                                          <img class="rounded-circle" src="{{ isset($rv->Employee->path_image) ? Storage::disk('s3')->temporaryUrl($rv->Employee->path_image, now()->addMinutes(5)) : '/images/user/avatar-4.jpg' }}" />
 
                                       </div>
                                       <div class="flex-1 ms-3">

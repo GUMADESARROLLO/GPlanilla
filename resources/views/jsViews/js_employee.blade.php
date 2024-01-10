@@ -29,9 +29,6 @@
             } 
         }); 
 
-        
-        
-
        
         $('#id_txt_buscar').on('keyup', function() {   
             var vTableArticulos = $('#tbl_employee').DataTable();     

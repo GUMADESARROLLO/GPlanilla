@@ -9,6 +9,8 @@ use App\Models\Position;
 use App\Models\Catalogos;
 use App\Models\Employee;
 
+use Illuminate\Support\Facades\Storage;
+
 class EmployeeController extends Controller {
     public function __construct()
     {
@@ -42,6 +44,7 @@ class EmployeeController extends Controller {
     public function UpdateEmployee(Request $request)
     {
         $id_employee        = $request->input('id_employee');
+
         Employee::UpdateEmployee($request);
         return redirect()->route('EditEmployee', ['id_employee' => $id_employee])->with('message_success', 'Registro Actualizado exitosamente :)');
 

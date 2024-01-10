@@ -9,7 +9,7 @@
         <div class="content">
         <div class="card mb-3">
           
-          <form class="row g-3 needs-validation" novalidate="" method="POST" action="{{ (isset($Employee)) ? route('UpdateEmployee') : route('SaveEmployee') }}">            
+          <form class="row g-3 needs-validation" novalidate="" method="POST" action="{{ (isset($Employee)) ? route('UpdateEmployee') : route('SaveEmployee') }}" enctype="multipart/form-data">            
               @csrf
               <div class="card-body bg-light"> 
                   @if(session('message_success')) 
@@ -27,47 +27,47 @@
                       </div>
                     @endif
                                         
-                    <div class="col-6 mb-3">
+                    <div class="col-sm-6 mb-3">
                       <label class="form-label" for="event-name">Nombres</label>
                       <div class="input-group"><span class="input-group-text "><span class="fas fa-user"></span></span>
                         <input class="form-control" type="text" name="nombres" placeholder="Nombres de la persona" required="" value="{{ $Employee->first_name ?? '' }}" />
                         <div class="invalid-feedback">Campo Requerido.</div>
                       </div>
                     </div>
-                    <div class="col-6 mb-3">
+                    <div class="col-sm-6 mb-3">
                       <label class="form-label" for="event-name">Apellidos</label>
                       <div class="input-group"><span class="input-group-text "><span class="fas fa-user"></span></span>
                         <input class="form-control" type="text" name="apellidos" placeholder="Apellidos de la persona" required="" value="{{ $Employee->last_name ?? '' }}" />
                         <div class="invalid-feedback">Campo Requerido.</div>
                       </div>
                     </div>
-                    <div class="col-3 mb-3">
+                    <div class="col-sm-3 mb-3">
                       <label class="form-label" for="event-name">Telefono</label>
                       <div class="input-group"><span class="input-group-text "><span class="fas fa-phone-alt"></span></span>
                         <input class="form-control" id="event-name" type="text" name="telefono" placeholder="+505-0000-000" data-inputmask="'mask': ['+505-9999-9999']" data-mask value="{{ $Employee->phone_number ?? '' }}" />
                       </div>
                     </div>
-                    <div class="col-3 mb-3">
+                    <div class="col-sm-3 mb-3">
                       <label class="form-label" for="event-name">Cedula</label>
                       <div class="input-group"><span class="input-group-text "><span class="far fa-address-card"></span></span>
                         <input class="form-control" id="event-name" type="text" name="cedula" placeholder="000-000000-0000A" data-inputmask="'mask': ['999-999999-9999A']" data-mask required="" value="{{ $Employee->cedula_number ?? '' }}"/>
                         <div class="invalid-feedback">Campo Requerido.</div>
                       </div>
                     </div>
-                    <div class="col-3 mb-3">
+                    <div class="col-sm-3 mb-3">
                       <label class="form-label" for="event-name">Numero INSS</label>
                       <div class="input-group"><span class="input-group-text "><span class="far fa-address-card"></span></span>
                       <input class="form-control" id="event-name" type="text" name="num_inss" placeholder="0000000-0" data-inputmask="'mask': ['9999999-9']" data-mask value="{{ $Employee->inss_number ?? '' }}" />
                       </div>
                     </div>
-                    <div class="col-3 mb-3">
+                    <div class="col-sm-3 mb-3">
                       <label class="form-label" for="event-name">EMail</label>
                       <div class="input-group"><span class="input-group-text "><span class="far fa-envelope"></span></span>
                         <input class="form-control" id="txt_email" type="text" name="email" placeholder="email@ejemplo.com" value="{{ $Employee->email ?? '' }}" />
                       </div>
                     </div>
 
-                    <div class="col-6 mb-3">
+                    <div class="col-sm-6 mb-3">
                       <label class="form-label" for="event-name">Fecha Entrada</label>
                       <div class="input-group"><span class="input-group-text "><span class="far fa-calendar-check"></span></span>
                         <input class="form-control datetimepicker" id="start-date" type="text" name="date_in" placeholder="y/m/d" data-options='{"dateFormat":"Y-m-d","disableMobile":true}' required="" value="{{ $Employee->date_in ?? '' }}" />
@@ -75,7 +75,7 @@
                       </div>
                     </div>
                     
-                    <div class="col-6 mb-3">
+                    <div class="col-sm-6 mb-3">
                       <label class="form-label" for="event-name">Fecha Salida</label>
                       <div class="input-group"><span class="input-group-text "><span class="far fa-calendar-times"></span></span>
                         <input class="form-control datetimepicker" id="end-date" type="text" name="date_out" placeholder="y-m-d" data-options='{"dateFormat":"Y-m-d","disableMobile":true}' value="{{ $Employee->date_out ?? '' }}"/>
@@ -126,19 +126,19 @@
                       <div class="border-dashed-bottom my-3"></div>
                     </div>
 
-                    <div class="col-3 mb-3">
+                    <div class="col-sm-3 mb-3">
                       <label class="form-label" for="event-name">Vacaciones Acumuladas</label>
                       <div class="input-group"><span class="input-group-text "><span class="fas fa-child"></span></span>
                         <input class="form-control" type="text" name="Vacaciones" placeholder="0.00"  value="{{ $Employee->vacation_balance ?? '' }}" />
                       </div>
                     </div>
-                    <div class="col-3 mb-3">
+                    <div class="col-sm-3 mb-3">
                       <label class="form-label" for="event-name">Talla Camisa</label>
                       <div class="input-group"><span class="input-group-text "><span class="fas fa-user-tag"></span></span>
                         <input class="form-control" type="text" name="talla_camisa" placeholder="Ej. "  value="{{ $Employee->shirt_size ?? '' }}"/>
                       </div>
                     </div>
-                    <div class="col-3 mb-3">
+                    <div class="col-sm-3 mb-3">
                       <label class="form-label" for="event-name">Talla Pantalon</label>
                       <div class="input-group"><span class="input-group-text "><span class="fas fa-user-tag"></span></span>
                         <input class="form-control" type="text" name="talla_pantalon" placeholder="Ej. "  value="{{ $Employee->pants_size ?? '' }}" />
@@ -152,25 +152,27 @@
                         <option value="0" @if(isset($Employee) && $Employee->active == 2) selected @endif>Inactivo</option>
                       </select>
                     </div>
-                    <div class="col-12 mb-3 invisible">
+                    <div class="mb-3">
+                      
+                    </div>
+                    <div class="col-12 mb-3 ">
                       <div class="">
-                        <div class="row" data-dropzone="data-dropzone" data-options='{"maxFiles":1,"data":[{"name":"avatar-4.jpg","size":"54kb","url":"/images/user","acceptedFiles" : "image/jpeg,image/png,image/gif"}]}'>
-                          <div class="fallback">
-                            <input type="file" name="file" />
-                          </div>
+                        <div class="row" >
+                          
                           <div class="col-md-auto">
                             <div class="dz-preview dz-preview-single">
                               <div class="dz-preview-cover d-flex align-items-center justify-content-center mb-3 mb-md-0">
-                                <div class="avatar avatar-4xl"><img class="rounded-circle" src="/images/user/avatar-4.jpg" alt="..." data-dz-thumbnail="data-dz-thumbnail" /></div>
+                                <div class="avatar avatar-4xl">
+                                  <img class="rounded-circle" src="{{ isset($Employee->path_image) ? Storage::disk('s3')->temporaryUrl($Employee->path_image, now()->addMinutes(5)) : '/images/user/avatar-4.jpg' }}" alt="..." data-dz-thumbnail="data-dz-thumbnail" />
+                                </div>
                                 <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
                               </div>
                             </div>
                           </div>
                           <div class="col-md">
-                            <div class="dz-message dropzone-area px-2 py-3" data-dz-message="data-dz-message">
-                              <div class="text-center"><img class="me-2" src="images/cloud-upload.svg" width="25" alt="" />Upload your profile picture
-                                <p class="mb-0 fs--1 text-400">Upload a 300x300 jpg image with <br />a maximum size of 400KB</p>
-                              </div>
+                            <div class="mb-3">
+                              <label class="form-label" for="photo_employee">Maximo permitdo 2MB</label>
+                              <input class="form-control" id="photo_employee" name="photo_employee" type="file" />
                             </div>
                           </div>
                         </div>

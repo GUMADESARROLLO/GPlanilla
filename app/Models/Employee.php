@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class Employee extends Model {
     protected $table = "tbl_employee";
@@ -46,7 +48,7 @@ class Employee extends Model {
 
                     
 
-                    $toInsert[0] = [
+                    $toInsert = [
                         'position_id'           => $posicion ,
                         'contract_type_id'      => $contrato ,
                         'first_name'            => $nombres ,
@@ -66,6 +68,7 @@ class Employee extends Model {
                         'active'                => $activo
                     ];
                     Employee::insert($toInsert);
+                    Employee::UploadAWS($request);
                 }); 
                 
             } catch (Exception $e) {
@@ -97,6 +100,7 @@ class Employee extends Model {
                     $talla_camisa       = $request->input('talla_camisa');
                     $talla_pantalon     = $request->input('talla_pantalon');
                     $activo             = $request->input('activo');
+                    
 
                     Employee::where('id_employee',  $id_employee)->update([
                         'position_id'           => $posicion ,
@@ -117,7 +121,12 @@ class Employee extends Model {
                         'pants_size'            => $talla_pantalon ,
                         'active'                => $activo
                     ]);
+
+                    Employee::UploadAWS($request);
+
+                    
                 }); 
+
                 
             } catch (Exception $e) {
                 
@@ -125,6 +134,35 @@ class Employee extends Model {
                 return response()->json($mensaje);
             }
         
+    }
+    public static function UploadAWS(Request $request)
+    {
+        $id_employee        = $request->input('id_employee');
+
+        if($request->hasFile('photo_employee')){
+            $info_Employee = Employee::where('id_employee',  $id_employee)->first();                        
+            $Departamento   = Str::slug($info_Employee->Position->Department->department_name,'_');
+
+            $name_employee = $info_Employee->first_name. ' ' . $info_Employee->last_name;
+            $name_employee = Str::slug($name_employee, '_');
+
+            $file = $request->file('photo_employee');
+            $fileExtension = Str::slug($file->getClientOriginalExtension());
+
+            $AWS_PATH = 'Planilla/' . $Departamento . '/' .$name_employee.'.'.$fileExtension;
+
+            if (Storage::disk('s3')->exists($info_Employee->path_image)) {
+                Storage::disk('s3')->delete($info_Employee->path_image);
+            }
+
+            Employee::where('id_employee',  $id_employee)->update([
+                "path_image" => $AWS_PATH,
+            ]);
+            
+            Storage::disk('s3')->put($AWS_PATH, file_get_contents($file));
+            
+        }
+
     }
     public static function rmEmployee(Request $request)
     {

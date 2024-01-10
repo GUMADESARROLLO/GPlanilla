@@ -57,11 +57,8 @@
               </div>
              
             </div>
-            
-          </div>
-
-        <div class="row g-3 mb-3">
-            <div class="col-xxl-3 col-md-6 col-lg-5">
+     
+            <div class="col-xxl-3 col-md-6 col-lg-3">
                 <div class="card shopping-cart-bar-min-height h-100">
                     <div class="card-header d-flex flex-between-center">
                     <h6 class="mb-0">Acumulacion por Departamento</h6>
@@ -113,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-9 col-md-12">
+            <div class="col-xxl-9 col-md-6 col-lg-9">
                <div class="card h-100" id="table" data-list='{"valueNames":["path"],"page":5,"pagination":true,"fallback":"pages-table-fallback"}'>
                 <div class="card-header">
                   <div class="row flex-between-center">
@@ -150,8 +147,9 @@
                         <tr class="btn-reveal-trigger">
                           <td class="align-middle white-space-nowrap path">
                             <div class="d-flex align-items-center position-relative">
-                              <div class="avatar avatar-2xl">
-                                <img class="rounded-circle" src="/images/user/avatar-4.jpg" alt="" />
+                              
+                              <div class="avatar avatar-3xl">
+                                <img class="rounded-circle" src="{{ isset($rv->Employee->path_image) ? Storage::disk('s3')->temporaryUrl($rv->Employee->path_image, now()->addMinutes(5)) : '/images/user/avatar-4.jpg' }}" />
 
                               </div>
                               <div class="flex-1 ms-3">
