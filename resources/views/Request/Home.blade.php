@@ -21,6 +21,7 @@
               </div>
               <div class="card theme-wizard mb-5">
                 <div class="card-header bg-light pt-2 pb-2">
+                  @if(Auth::User()->role_id == 1)
                   <ul class="nav nav-pills mb-3" role="tablist" id="pill-tab1">
                     <li class="nav-item" role="presentation">
                       <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#id_tab_requests" type="button" role="tab"  aria-selected="true"><span class="fas fa-dollar-sign me-2" data-fa-transform="shrink-2"></span><span class="d-none d-md-inline-block fs--1">Solicitudes</span></button>
@@ -30,9 +31,9 @@
                     </li>
                     <li class="nav-item" role="presentation" style="display:none">
                       <button class="nav-link" data-bs-toggle="pill" data-bs-target="#id_tab_estados" type="button" role="tab" aria-selected="false"><span class="fas fa-user-friends me-2" data-fa-transform="down-2 shrink-2"></span><span class="d-none d-md-inline-block fs--1">Estados</span></button>
-                    </li>
-                    
+                    </li>                    
                   </ul>
+                  @endif
                 </div>
                 <div class="card-body ">
                   <div class="tab-content">

@@ -30,9 +30,12 @@ $(document).ready(function () {
             var list_type       = $("#list_type").val();
             var cant_day        = $("#cant_day").val();
             var observation     = $("#observation").val();
+
             var IdRequest       = $("#id_form").text();
 
             IdRequest      = isValue(IdRequest,0,true)   
+            employee      = isValue(employee,0,true)   
+
             date_ini      = isValue(date_ini,'N/D',true)   
             date_end      = isValue(date_end,'N/D',true)    
             date_return   = isValue(date_return,'N/D',true)    
@@ -41,7 +44,7 @@ $(document).ready(function () {
             observation   = isValue(observation,'N/D',true)    
         
 
-            if(date_ini ==='N/D'||date_end === 'N/D' || list_type ==='N/D'){
+            if(employee == 0||  date_ini ==='N/D' || date_end === 'N/D' || list_type ==='N/D'){
                 Swal.fire("Oops", "Datos no Completos", "error");
             }else{
                 $.ajax({

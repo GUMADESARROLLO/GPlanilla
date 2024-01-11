@@ -4,7 +4,10 @@
             <span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse scrollbar" id="navbarStandard">
             <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
+              
+              @if(Auth::User()->role_id == 1)
               <li class="nav-item dropdown"><a class="nav-link" href="{{ route('Home') }}">Dashboard</a>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="documentations">Empleados</a>
                 <div class="dropdown-menu dropdown-menu-card border-0 mt-0" aria-labelledby="documentations">
@@ -24,7 +27,9 @@
                 </div>
               </li>             
               <li class="nav-item dropdown"><a class="nav-link" href="{{ route('Catalogos') }}">Catalogos</a>
-              
+              @else
+              <li class="nav-item dropdown"><a class="nav-link" href="{{ route('Requests') }}">Solicitudes</a>
+              @endif
             </ul>
            
             <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
@@ -150,10 +155,15 @@
 
               </li>
               <li class="nav-item dropdown"><a class="nav-link pe-0" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <div class="avatar avatar-xl">
-                    <img class="rounded-circle" src="{{ asset('images/user/avatar-4.jpg') }}" alt="" />
-
-                  </div>
+              <div class="d-flex align-items-center position-relative">
+                <div class="flex-1">
+                  <h6 class="mb-0 fw-semi-bold"><div class="stretched-link text-white">{{Session::get('name_session')}}</div></h6>
+                  <p class="text-white fs--2 mb-0">{{ Session::get('name_rol') }}</p>
+                </div>
+                <div class="avatar avatar-xl ms-3">
+                  <img class="rounded-circle" src="{{ asset('images/user/avatar-4.jpg') }}"   />
+                </div>
+              </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                   <div class="bg-white dark__bg-1000 rounded-2 py-2">
@@ -165,7 +175,9 @@
                     <a class="dropdown-item" href="#!">Feedback</a>
 
                     <div class="dropdown-divider"></div> -->
+                    @if(Auth::User()->role_id == 1)
                     <a class="dropdown-item" href="{{ route('Usuarios') }}" >Usuarios</a>
+                    @endif
                     <a class="dropdown-item" href="{{ route('logout') }}">Salir</a>
                   </div>
                 </div>

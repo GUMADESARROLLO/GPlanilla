@@ -21,7 +21,6 @@
               </div>
           </div>
           <!-- FIN DEL FORM DE AGREGAR -->
-
           <div class="row mt-3">
             <div class="col">
               <div class="card overflow-hidden">
@@ -56,8 +55,7 @@
                               <p class="mb-0">{{$a->Position->Department->Company->company_name}}</p>
                             </div>
                           </div>
-                        </td>
-                        
+                        </td>                        
                         <td class="align-middle ps-4 pe-1" style="width: 130px; min-width: 130px;">
                           <div>
                               <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover" onClick="Remover({{$a->id_employee}})"><span class="text-500 fas fa-trash-alt"></span></button>

@@ -44,7 +44,7 @@ class Usuario extends Model {
                     $response =   Usuario::where('id',  $Estado)->update([
                         "username" => $usuario,
                         "nombre" => $nombre,
-                        "id_rol" => $id_rol,
+                        "role_id" => $id_rol,
                     ]);
                 }
 
