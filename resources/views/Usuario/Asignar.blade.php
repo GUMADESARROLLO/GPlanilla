@@ -36,8 +36,6 @@
                         </option>
                         @endforeach
                       </select>
-                              
-                      <div class="input-group-text bg-transparent" id="btn_assigned"><span class="fa fa-plus fs--1 text-600" ></span></div>
                     </div>
                   </div>
                 </div>

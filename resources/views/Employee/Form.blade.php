@@ -84,7 +84,7 @@
 
                     <div class="col-sm-3">
                       <label class="form-label" for="position">Posicion</label>
-                      <select class="form-select js-choice" size="1" name="posicion" data-options='{"removeItemButton":true,"placeholder":true}' required="">
+                      <select class="js-example-basic-single form-select" size="1" name="posicion" data-options='{"removeItemButton":true,"placeholder":true}' required="">
                         @foreach($Position as $p)
                         <option value="{{ $p->id_position }}" @if(isset($Employee) && $p->id_position == $Employee->position_id) selected @endif>
                             {{ $p->position_name }}
@@ -95,7 +95,7 @@
                     
                     <div class="col-sm-3">
                       <label class="form-label" for="contract_type">Nacionalidad</label>
-                      <select class="form-select js-choice" size="1" name="nacionalidad" data-options='{"removeItemButton":true,"placeholder":true}'>
+                      <select class="js-example-basic-single form-select" size="1" name="nacionalidad" data-options='{"removeItemButton":true,"placeholder":true}'>
                         @foreach($Paises as $p => $v)                     
                         <option value="{{ $p }}" @if(isset($Employee) && $p === $Employee->nationality) selected @endif>  
                             {{ $v }}

@@ -13,6 +13,7 @@ class Employee extends Model {
     protected $table = "tbl_employee";
     protected $connection = 'mysql';
     public $timestamps = false;
+    protected $primaryKey = 'id_employee';
 
     public function Contract()
     {

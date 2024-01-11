@@ -3,6 +3,11 @@ $(document).ready(function () {
     var Selectors = {
         MODAL_REQUEST: '#modal_new_request',        
     };
+
+  
+    $("#list_employee").select2({
+        dropdownParent: $("#modal_new_request")
+    });
     
 
     $("#btn_open_modal_request").click(function(){

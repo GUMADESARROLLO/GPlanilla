@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 class RequestsVacation extends Model {
     public $timestamps = false;
     protected $table = "tbl_vacation_request";
+    protected $fillable = ['request_status_id'];
+    protected $primaryKey = 'id_vacation_request';
     public function Employee()
     {
         return $this->belongsTo(Employee::class, 'employee_id','id_employee');

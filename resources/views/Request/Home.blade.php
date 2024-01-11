@@ -243,16 +243,22 @@
                   <button class="btn-close me-n1" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-card"> 
+                  
                   <div class="mb-3">
                     <label class="fs-0" for="eventStartDate">Colaborador</label><span id="id_form" class="invisible">0</span>
-
-                    <select class="form-select" id="list_employee" >
-                      <option value="">Colaboradores ...</option>
-                      @foreach($Employee as $e)
-                      <option value="{{$e->id_employee}}">{{$e->first_name}} {{$e->last_name}}</option>
-                      @endforeach
-                    </select>
-                  </div>                 
+           
+                    <div class="input-group">
+                      <select class="js-example-basic-single form-select" id="list_employee" size="1" data-options='{"removeItemButton":true,"placeholder":true}'>
+                        <option value="">Lista de Colaboradores...</option> 
+                        @foreach($Employee as $e)
+                        <option value="{{$e->id_employee}}"> 
+                          {{$e->Position->Department->Company->company_name}} | {{$e->first_name}} {{$e->last_name}}
+                        </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>    
+                               
                   <div class="mb-3">
                     <label class="fs-0" for="eventStartDate">Inicia</label>
                     <div class="input-group"><span class="input-group-text "><span class="far fa-calendar-alt"></span></span>
@@ -281,13 +287,13 @@
                       </select>
                     </div>
                   </div>
+                  
                   <div class="mb-3">
-                    <label class="fs-0" for="eventValDay">Cantidad de dias Solicitados</label>                    
+                    <label class="fs-0 " for="eventValDay">Cantidad de dias Solicitados</label>                    
                     <div class="input-group"><span class="input-group-text "><span class="fas fa-hospital-alt"></span></span>
                         <input class="form-control" id="cant_day" type="text" name="cant_day" disabled="" placeHolder="0.00">
                       </div>
                   </div>
-                 
                   <div class="mb-3">
                     <label class="fs-0" for="eventDescription">Observacion:</label>
                     <textarea class="form-control" rows="3" name="description" id="observation" ></textarea>
@@ -295,6 +301,7 @@
                   
                 </div>
                 <div class="card-footer d-flex justify-content-end align-items-center bg-light">
+                <a class="me-3 btn badge-soft-success btn-sm" href="#!"><span class="fas fa-calendar me-2"></span>1 Dia = 1.18</a>
                   <button class="btn btn-primary px-4" type="text" id="btn_save_request">Solcitar</button>
                 </div>
             </div>

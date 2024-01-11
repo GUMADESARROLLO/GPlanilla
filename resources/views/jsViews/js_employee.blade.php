@@ -5,6 +5,7 @@
     $('#txt_email').inputmask({
         alias: 'email'
     });
+    $('.js-example-basic-single').select2();
 
     var Selectors = {
         TABLE_SETTING: '#modal_new_product',
