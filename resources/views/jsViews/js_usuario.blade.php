@@ -1,17 +1,4 @@
 <script type="text/javascript">
-    function isValue(value, def, is_return) {
-        if ( $.type(value) == 'null'
-            || $.type(value) == 'undefined'
-            || $.trim(value) == '(en blanco)'
-            || $.trim(value) == ''
-            || ($.type(value) == 'number' && !$.isNumeric(value))
-            || ($.type(value) == 'array' && value.length == 0)
-            || ($.type(value) == 'object' && $.isEmptyObject(value)) ) {
-            return ($.type(def) != 'undefined') ? def : false;
-        } else {
-            return ($.type(is_return) == 'boolean' && is_return === true ? value : true);
-        }
-    }
     var Selectors = {
         TABLE_SETTING: '#modal_new_product',
     };
@@ -40,8 +27,7 @@
             }
         });
     $("#tbl_usuarios_filter").hide();
-    $('#id_txt_buscar').on('keyup', function() {      
-        console.log(this.value)  
+    $('#id_txt_buscar').on('keyup', function() {    
         vTableUsuario.search(this.value).draw();
     });
     $("#id_btn_new").click(function(){
@@ -59,16 +45,23 @@
         modal.show();
         
     });
+    $("#btn_asignar").click(function(){
+   
+        var IdUser = $("#id_modal_state").text();   
+        
+        location.href = 'Asignar/' + IdUser;
+   
+    });
+
+    
     function OpenModal(Obj){
         $("#id_remover").show();
-        
-
 
         $("#id_modal_state").html(Obj.id);
 
         $("#id_nombre_usuario").val(Obj.username);   
         $("#id_nombre_completo").val(Obj.nombre);
-        $("#id_tipo_usuaro").val(Obj.id_rol).change();
+        $("#id_tipo_usuaro").val(Obj.role_id).change();
         $("#id_password").val("");
 
         var TABLE_SETTING = document.querySelector(Selectors.TABLE_SETTING);

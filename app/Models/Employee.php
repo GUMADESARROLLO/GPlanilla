@@ -182,9 +182,11 @@ class Employee extends Model {
             }
         }
     }
-    public static function EditEmployee($id)
+    public static function Assigned($id)
     {
-        return "OK->".$id;
+        $UsersAssigned = Assigned::where('users_id',$id)->pluck('employee_id')->toArray(); 
+
+        return Employee::whereIn('id_employee',$UsersAssigned)->get();;
 
     }
 

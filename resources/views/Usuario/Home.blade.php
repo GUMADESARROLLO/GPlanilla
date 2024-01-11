@@ -41,7 +41,6 @@
                       <thead style="display:none">
                         <tr>
                           <th></th>
-                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -52,43 +51,25 @@
                         
                         <tr class="border-bottom border-200">
                           <td>
-                            <div class="d-flex align-items-center position-relative">
-                              <div class="avatar avatar-2xl status-online">
-                                <img class="rounded-circle" src="{{ asset('images/user/avatar-4.jpg') }}" />
+                              <div class="row justify-content-between">
+                                <div class="col">
+                                  <div class="d-flex">
+                                    <div class="avatar avatar-2xl status-online">
+                                      <img class="rounded-circle" src="images/user/avatar-4.jpg" alt="" />
 
+                                    </div>
+                                    <div class="flex-1 align-self-center ms-2">
+                                      <p class="mb-1 lh-1"><a class="fw-semi-bold" href="#!" onclick="OpenModal({{$usuario}})" >{{ strtoupper($usuario->nombre) }}</a> permisos de  <a href="#!" onclick="AsginarRuta({{$usuario}})">{{$usuario->rol->role_name}}</a></p>
+                                      <p class="mb-0 fs--1">11 hrs &bull; Asignados &bull; <span class="fas fa-user"></span> 0 </p>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
-                              <div class="flex-1 ms-3">
-                                <h6 class="mb-0 fw-semi-bold"><a class="text-900" href="#!" onclick="OpenModal({{$usuario}})">{{ strtoupper($usuario->nombre) }} ( {{$usuario->rol->role_name}} )</a></h6>
-                                <p class="text-500 fs--2 mb-0"><a class="text-700" href="#!" onclick="AsginarRuta({{$usuario}})">{{ strtoupper($usuario->username) }}</a></p>
-                              </div>
-                            </div>
-                          </td>
-                          
-                          <td class="align-middle">
-                            <div class="row g-2 justify-content-end">
-                              <div class="col-auto">
-                               
-                                    <a class="d-inline-flex align-items-center border rounded-pill px-3 py-1 me-2 mt-2 inbox-link" href="#!" onclick="Remover(0)">
-                                        <span class="fas fa-boxes text-danger" data-fa-transform="grow-4"></span><span class="ms-2"> B00</span>
-                                    </a>
-                             
-                              </div>
-                            </div>
                           </td>
                         </tr>
                         @endforeach
                       </tbody>
                     </table>
-                  </div>
-                </div>
-                <div class="card-footer bg-light py-2">
-                  <div class="row flex-between-center">
-                    <div class="col-auto">
-                     
-                    </div>
-                    <div class="col-auto">
-                        
-                    </div>
                   </div>
                 </div>
               </div>
@@ -105,7 +86,7 @@
             <div class="modal-header px-5 position-relative modal-shape-header bg-shape">
                 <div class="position-relative z-index-1 light">
                     <h4 class="mb-0 text-white" id="authentication-modal-label">Informacion del Usuario</h4>                    
-                    <p class="fs--1 mb-0 text-white" id="id_modal_state"> New </p>
+                    <p class="fs--1 mb-0 text-white invisible" id="id_modal_state"> New </p>
                 </div>
                 <button class="btn-close btn-close-white position-absolute top-0 end-0 mt-2 me-2" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
@@ -127,7 +108,7 @@
                             <div class="mb-3">
                                 <label class="fs-0" for="id_tipo_usuaro">Tipo de Usuario</label>
                                 <select class="form-select" id="id_tipo_usuaro" name="label" required="required">
-                                    <option value="" selected="selected">None</option>
+                                    <option value="">None</option>
                                     @foreach ($Roles as $Rol)
                                     <option value="{{$Rol->id}}">{{strtoupper($Rol->role_name)}}</option>
                                     @endforeach
@@ -140,9 +121,12 @@
                         <input class="form-control" id="id_password" type="password" name="title" required="required" />
                     </div>
                 </div>
+                
+               
                 <div class="card-footer d-flex justify-content-end align-items-center bg-light">
                     <button class="btn btn-danger px-4" id="id_remover" type="submit">Eliminar</button>
                     <button class="btn btn-primary px-4 ms-3" id="id_send_frm_produc" type="submit">Guardar</button>
+                    <a class="btn btn-success px-4 ms-3 " href="#!" id="btn_asignar">Asignar</a>
                 </div>
             </div>
           </div>

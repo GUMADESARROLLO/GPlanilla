@@ -38,7 +38,7 @@
     <link href="{{ asset('css/theme_gumadesk/css/user.min.css') }}" rel="stylesheet" id="user-style-default">
     <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
     
-  
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .bg-shape-umk {
             position: relative;
@@ -104,7 +104,6 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
     <script src="{{ asset('js/theme_gumadesk/vendors/list.js/list.min.js') }}"></script>
     <script src="{{ asset('js/theme_gumadesk/theme.js') }}"></script>
-    
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.min.js"></script>
     <script src="{{ asset('js/Numeral.js') }}"></script>

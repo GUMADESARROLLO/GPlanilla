@@ -32,6 +32,9 @@ Route::get('/EditEmployee/{id_employee}', 'EmployeeController@editEmployee')->na
 Route::get('Usuarios', 'UsuarioController@getUsuarios')->name('Usuarios');
 Route::post('SaveUsuario', 'UsuarioController@SaveUsuario')->name('SaveUsuario');
 Route::post('DeleteUsuario', 'UsuarioController@DeleteUsuario')->name('DeleteUsuario');
+Route::get('Asignar/{id_employee}', 'UsuarioController@Asignar')->name('Asignar');
+Route::post('SaveAssigned', 'UsuarioController@SaveAssigned')->name('SaveAssigned');
+Route::post('rmAssigned', 'UsuarioController@rmAssigned')->name('rmAssigned');
 
 
 Route::get('Catalogos', 'CatalogoController@getCatalogos')->name('Catalogos');
