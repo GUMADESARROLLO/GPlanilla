@@ -11,8 +11,8 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>GPLANILLA | GRUPO GUMA </title>
-    <link rel="shortcut icon" href="{{ url('images/ic-umk.png') }}" />
+    <title>PLANILLA | GRUPO GUMA </title>
+    <link rel="shortcut icon" href="{{ url('images/ic-guma.png') }}" />
 
 
     <!-- ===============================================-->

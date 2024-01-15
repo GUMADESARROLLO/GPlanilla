@@ -25,9 +25,7 @@ Route::get('AddEmployee', 'EmployeeController@AddEmployee')->name('AddEmployee')
 Route::post('SaveEmployee', 'EmployeeController@SaveEmployee')->name('SaveEmployee');
 Route::post('UpdateEmployee', 'EmployeeController@UpdateEmployee')->name('UpdateEmployee');
 Route::post('rmEmployee', 'EmployeeController@rmEmployee')->name('rmEmployee');
-
 Route::get('/EditEmployee/{id_employee}', 'EmployeeController@editEmployee')->name('EditEmployee');
-
 
 Route::get('Usuarios', 'UsuarioController@getUsuarios')->name('Usuarios');
 Route::post('SaveUsuario', 'UsuarioController@SaveUsuario')->name('SaveUsuario');
@@ -35,7 +33,6 @@ Route::post('DeleteUsuario', 'UsuarioController@DeleteUsuario')->name('DeleteUsu
 Route::get('Asignar/{id_employee}', 'UsuarioController@Asignar')->name('Asignar');
 Route::post('SaveAssigned', 'UsuarioController@SaveAssigned')->name('SaveAssigned');
 Route::post('rmAssigned', 'UsuarioController@rmAssigned')->name('rmAssigned');
-
 
 Route::get('Catalogos', 'CatalogoController@getCatalogos')->name('Catalogos');
 Route::post('AddCatalogo', 'CatalogoController@AddCatalogo')->name('AddCatalogo');
@@ -47,5 +44,8 @@ Route::post('SaveTypeRequest', 'RequestsController@SaveTypeRequest')->name('Save
 Route::post('rmRequests', 'RequestsController@rmRequests')->name('rmRequests');
 Route::post('UpdateRequest', 'RequestsController@UpdateRequest')->name('UpdateRequest');
 Route::post('SaveRequest', 'RequestsController@SaveRequest')->name('SaveRequest');
+
+
+Route::get('Playrolls', 'PlayrollsController@getPlayrolls')->name('Playrolls');
 
 
