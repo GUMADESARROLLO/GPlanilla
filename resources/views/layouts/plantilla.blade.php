@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
     <link href="{{ asset('js/theme_gumadesk/vendors/overlayscrollbars/OverlayScrollbars.min.css') }}" rel="stylesheet" >
-    
+    <link href="{{ asset('js/theme_gumadesk/vendors/choices/choices.min.css') }}" rel="stylesheet" >
     <link href="{{ asset('css/theme_gumadesk/css/theme.min.css') }}" rel="stylesheet" id="style-default">
     <link href="{{ asset('css/theme_gumadesk/css/user.min.css') }}" rel="stylesheet" id="user-style-default">
     <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
@@ -105,6 +105,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
     <script src="{{ asset('js/theme_gumadesk/vendors/list.js/list.min.js') }}"></script>
     <script src="{{ asset('js/theme_gumadesk/theme.js') }}"></script>
+    <script src="{{ asset('js/theme_gumadesk/vendors/choices/choices.min.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.min.js"></script>
     <script src="{{ asset('js/Numeral.js') }}"></script>

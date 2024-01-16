@@ -8,7 +8,8 @@ use App\Models\Contract;
 use App\Models\Position;
 use App\Models\Catalogos;
 use App\Models\Employee;
-
+use App\Models\PayrollType;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller {
@@ -32,7 +33,8 @@ class EmployeeController extends Controller {
         $Contract = Contract::where('active',1)->get();  
         $Position = Position::where('active',1)->get();
         $Paises =   Catalogos::Nacionalidades();   
-        return view('Employee.Form', compact('Contract','Position','Paises'));
+        $PayrollTypes = PayrollType::where('active',1)->get();
+        return view('Employee.Form', compact('Contract','Position','Paises','PayrollTypes'));
     }
 
     public function SaveEmployee(Request $request)
@@ -62,10 +64,30 @@ class EmployeeController extends Controller {
         $Contract = Contract::where('active',1)->get();  
         $Position = Position::where('active',1)->get();
         $Paises =   Catalogos::Nacionalidades();
-        $Employee = Employee::where('id_employee',$id)->first();  
-    
-        return view('Employee.Form', compact('Contract','Position','Paises','Employee'));
 
+        $Employee = Employee::where('id_employee',$id)->first();  
+
+        $date_in = EmployeeController::formatFechaDiferencia($Employee->date_in);
+
+        $PayrollTypes = PayrollType::where('active',1)->get();  
+    
+        return view('Employee.Form', compact('Contract','Position','Paises','Employee','date_in','PayrollTypes'));
+
+    }
+
+    public function formatFechaDiferencia($date)
+    {
+        return optional($date, function ($date) {
+            $diferencia = Carbon::parse($date)->diff(Carbon::now());
+
+            if ($diferencia->y < 1 && $diferencia->m < 1) {
+                return $diferencia->format('%d Días');
+            } elseif ($diferencia->y < 1) {
+                return $diferencia->format('%m meses %d días');
+            } else {
+                return $diferencia->format('%y año, %m meses, %d días');
+            }
+        }) ?? '00/00/0000';
     }
 
     
