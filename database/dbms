@@ -22,6 +22,7 @@ Table tbl_payrolls{
   id_payrolls int (10) [pk, increment]
   payroll_type_id int (10) [ref: > tbl_payroll_type.id_payroll_type]
   company_id int (10) [ref: > tbl_company.id_compy]
+  payroll_status_id int(10) [ref: > tbl_payroll_status.id_payroll_status]
   payroll_name varchar(25)
   start_date date
   end_date date
@@ -31,24 +32,39 @@ Table tbl_payrolls{
   created_at datetime
   updated_at datetime 
 }
+Table tbl_payroll_status{
+  id_payroll_status int (10) [pk, increment]
+  payroll_status_name varchar(25)  [
+    note: '
+    1 = Calculado 
+    2 = Autorizado
+    3 = Pagado
+    4 = Cerrado
+    ']
+    created_at datetime
+  updated_at datetime
+}
 Table tbl_payroll_type{
   id_payroll_type int (10) [pk, increment]
   payroll_type_name varchar(25)
   user_id int (10)
   created_at datetime
   updated_at datetime
+  active int (5)
 }
 Table tbl_payroll_inss_patronal{
   id_inss_patronal int (10) [pk, increment]
-  inss_patronal_value varchar(25)
+  inss_patronal_value decimal(10,4)
   user_id int (10)
+   active int (5)
   created_at datetime
   updated_at datetime
 }
 Table tbl_payroll_inatec{
   id_inatec int (10) [pk, increment]
-  inatec_value varchar(25)
+  inatec_value decimal(10,4)
   user_id int (10)
+   active int (5)
   created_at datetime
   updated_at datetime
 }

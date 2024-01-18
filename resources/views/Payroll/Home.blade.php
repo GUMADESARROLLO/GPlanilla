@@ -52,31 +52,31 @@
                               </thead>
                               <tbody class="list">
 
-                                @foreach($RequestsVacation as $rv)
+                                @foreach($Payrolls as $p)
                                 <tr class="btn-reveal-trigger">                                  
                                   <td class="align-middle white-space-nowrap path">
                                       <div class="d-flex align-items-center position-relative">
                                       <div class="avatar avatar-3xl ">
-                                          <img class="rounded-circle" src="{{ isset($rv->Employee->path_image) ? Storage::disk('s3')->temporaryUrl($rv->Employee->path_image, now()->addMinutes(5)) : '/images/user/avatar-4.jpg' }}" />
+                                          <img class="rounded-circle" src="/images/user/avatar-4.jpg" />
 
                                       </div>
                                       <div class="flex-1 ms-3">
-                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="EditEmployee/{{$rv->employee_id}}">CODIGO DE NOMINA</a></h6>
-                                          <p class="text-500 fs--2 mb-0">{{$rv->Employee->Position->Department->Company->company_name}} </p>
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="EditEmployee/{{$p->id_playrolls}}">CODIGO DE NOMINA</a></h6>
+                                          <p class="text-500 fs--2 mb-0">{{$p->Company->company_name}} |  {{$p->Type->payroll_type_name}}</p>
                                       </div>
                                       </div>
                                   </td>
-                                  <td class="align-middle white-space-nowrap path">{{ Date::parse($rv->start_date)->format('D, M d, Y')  }} </td>
-                                  <td class="align-middle white-space-nowrap path">{{ Date::parse($rv->end_date)->format('D, M d, Y')}} </td>
+                                  <td class="align-middle white-space-nowrap path">{{ Date::parse($p->start_date)->format('D, M d, Y')  }} </td>
+                                  <td class="align-middle white-space-nowrap path">{{ Date::parse($p->end_date)->format('D, M d, Y')}} </td>
                                   <td class="align-middle white-space-nowrap path"><a class="text-primary fw-semi-bold" href="#!">C$ 500,000.00</a></td>
                                   <td>
-                                    <span class="badge badge rounded-pill d-block p-2 {{$rv->Status->status_color}}">{{$rv->Status->status_name}}<span class="ms-1 {{$rv->Status->status_icon}}" data-fa-transform="shrink-2"></span>
+                                    <span class="badge badge rounded-pill d-block p-2 {{$p->Status->status_color}}">{{$p->Status->payroll_status_name}}<span class="ms-1 {{$p->Status->status_icon}}" data-fa-transform="shrink-2"></span>
                                   </span>
                                   <td class="align-middle white-space-nowrap views text-end">
                                   <div>
-                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edit_request({{$rv}})"><span class="text-500 fas fa-lock-open"></span></button>
-                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edit_request({{$rv}})"><span class="text-500 fas fa-edit"></span></button>
-                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"  onClick="Remover({{$rv->id_vacation_request}},3)"><span class="text-500 fas fa-trash-alt"></span></button>
+                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edit_request({{$p}})"><span class="text-500 fas fa-lock-open"></span></button>
+                                      <button class="btn p-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" onClick="edit_request({{$p}})"><span class="text-500 fas fa-edit"></span></button>
+                                      <button class="btn p-0 ms-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover"  onClick="Remover({{$p->id_playrolls}},3)"><span class="text-500 fas fa-trash-alt"></span></button>
                                   </div>
                                   </td>
                                 </tr>
@@ -120,64 +120,68 @@
                   <h5 class="modal-title">Nueva Nómina</h5>
                   <button class="btn-close me-n1" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-card"> 
-                   <div class="mb-3">
-                    <label class="fs-0" for="eventValDay">Unidad de negocio</label>
-                    <div class="input-group"><span class="input-group-text "><span class="far fa-clipboard"></span></span>
-                    <select class="form-select" id="list_type" name="label">                      
-                        @foreach($Company as $c)
-                        <option value="{{$c->id_compy}}"> {{$c->company_name}}</option>
-                        @endforeach
-                    </select>
-                    </div>
-                </div> 
-                  <div class="mb-3">
-                    <label class="fs-0" for="eventValDay">Tipo de Nóminas</label>
-                    <div class="input-group"><span class="input-group-text "><span class="far fa-clipboard"></span></span>
-                      <select class="form-select" id="list_type" name="label">                      
-                        @foreach($PayRollType as $t)
-                        <option value="{{$t->id_payroll_type}}"> {{$t->payroll_type_name}}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                  </div>  
-                  
-                               
-                  <div class="mb-3">
-                    <label class="fs-0" for="eventStartDate">Inicia</label>
-                    <div class="input-group"><span class="input-group-text "><span class="far fa-calendar-alt"></span></span>
-                      <input class="form-control datetimepicker" id="date_ini" type="text" required="required" name="startDate" placeholder="yyyy/mm/dd" data-options='{"static":"true","enableTime":"false","dateFormat":"Y-m-d"}' />
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label class="fs-0" for="eventEndDate">Termina</label>
-                    <div class="input-group"><span class="input-group-text "><span class="far fa-calendar-alt"></span></span>
-                      <input class="form-control datetimepicker" id="date_end" type="text" name="endDate" placeholder="yyyy/mm/dd" data-options='{"static":"true","enableTime":"false","dateFormat":"Y-m-d"}' />
-                    </div>
-                  </div>
-                 
-                  
-                  
-                  <div class="mb-3">
-                    <label class="fs-0 " for="eventValDay">INSS Patronal </label>                    
-                    <div class="input-group"><span class="input-group-text "><span class="fas fa-donate"></span></span>
-                        <input class="form-control" id="cant_day" type="text" name="cant_day" disabled="" placeHolder="0.00" value="{{$Inactec->inatec_value}}">
+                <div class="modal-body p-card">
+                   <div class="row g-3">
+                    
+                      <div class="col-md-12 mb-3">
+                        <label class="fs-0" for="eventValDay">Unidad de negocio</label>
+                        <div class="input-group"><span class="input-group-text "><span class="far fa-clipboard"></span></span>
+                          <select class="form-select" id="payroll_commpany" name="label">                      
+                              @foreach($Company as $c)
+                              <option value="{{$c->id_compy}}"> {{$c->company_name}}</option>
+                              @endforeach
+                          </select>
+                        </div>
+                      </div> 
+
+                      <div class="col-md-12 mb-3">
+                        <label class="fs-0" for="eventValDay">Tipo de Nóminas</label>
+                        <div class="input-group"><span class="input-group-text "><span class="far fa-clipboard"></span></span>
+                          <select class="form-select" id="payroll_type" name="label">                      
+                            @foreach($PayRollType as $t)
+                            <option value="{{$t->id_payroll_type}}"> {{$t->payroll_type_name}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                      </div>  
+                      
+                      <div class="col-md-12 mb-3">
+                        <label class="fs-0" for="eventStartDate">Inicia</label>
+                        <div class="input-group"><span class="input-group-text "><span class="far fa-calendar-alt"></span></span>
+                          <input class="form-control datetimepicker" id="payroll_date_ini" type="text" required="required" name="startDate" placeholder="yyyy/mm/dd" data-options='{"static":"true","enableTime":"false","dateFormat":"Y-m-d"}' />
+                        </div>
                       </div>
-                  </div>
-                  <div class="mb-3">
-                    <label class="fs-0 " for="eventValDay">INATEC</label>                    
-                    <div class="input-group"><span class="input-group-text "><span class="fas fa-donate"></span></span>
-                        <input class="form-control" id="cant_day" type="text" name="cant_day" disabled="" placeHolder="0.00" value="{{$InssParonal->inss_patronal_value}}">
+
+                      <div class="col-md-12 mb-3">
+                        <label class="fs-0" for="eventEndDate">Termina</label>
+                        <div class="input-group"><span class="input-group-text "><span class="far fa-calendar-alt"></span></span>
+                          <input class="form-control datetimepicker" id="payroll_date_end" type="text" name="endDate" placeholder="yyyy/mm/dd" data-options='{"static":"true","enableTime":"false","dateFormat":"Y-m-d"}' />
+                        </div>
                       </div>
-                  </div>
-                  <div class="mb-3">
-                    <label class="fs-0" for="eventDescription">Observacion:</label>
-                    <textarea class="form-control" rows="3" name="description" id="observation" ></textarea>
-                  </div>
-                  
+                      
+                      <div class="col-md-6 mb-3">
+                        <label class="fs-0 " for="eventValDay">INSS Patronal </label>                    
+                        <div class="input-group"><span class="input-group-text "><span class="fas fa-donate"></span></span>
+                            <input class="form-control" id="payroll_inss_patronal" type="text" name="cant_day" disabled="" placeHolder="0.00" value="{{$Inactec->inatec_value}}">
+                          </div>
+                      </div>
+                      
+                      <div class="col-md-6 mb-3">
+                        <label class="fs-0 " for="eventValDay">INATEC</label>                    
+                        <div class="input-group"><span class="input-group-text "><span class="fas fa-donate"></span></span>
+                            <input class="form-control" id="payroll_inactec" type="text" name="cant_day" disabled="" placeHolder="0.00" value="{{$InssParonal->inss_patronal_value}}">
+                          </div>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="fs-0" for="eventDescription">Observacion:</label>
+                        <textarea class="form-control" rows="3" name="description" id="payroll_observation" ></textarea>
+                      </div>
+
+                    </div>                  
                 </div>
                 <div class="card-footer d-flex justify-content-end align-items-center bg-light">
-                  <button class="btn btn-primary px-4" type="text" id="btn_save_request">Crear</button>
+                  <button class="btn btn-primary px-4" type="text" id="btn_save_payroll">Crear</button>
                 </div>
             </div>
           </div>

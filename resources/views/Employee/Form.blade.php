@@ -39,7 +39,7 @@
                       @endif
                       @if(isset($Employee)) 
                         <div class="col-12 mb-3" style="display:none">
-                          <input class="form-control" type="text" name="id_employee" value="{{ $Employee->id_employee ?? '' }}" />
+                          <input class="form-control" type="text" id="txt_employee" name="id_employee" value="{{ $Employee->id_employee ?? '' }}" />
                         </div>
                       @endif
                       <div class="row gx-2">
@@ -186,38 +186,37 @@
                         <option value="0" @if(isset($Employee) && $Employee->active == 2) selected @endif>Inactivo</option>
                       </select>
                       </div>
-                      <div class="mb-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <label class="mb-0" for="event-tags">Planillas</label>
-                        </div>
-                        <select class="form-select js-choice" id="event-tags" multiple="multiple" size="1" name="Payrol_types" data-options='{"removeItemButton":true,"placeholder":true}'>
-                          <option value="">Planillas tipo...</option>
-                          @foreach($PayrollTypes as $t)
-                            <option value="{{$t->id_payroll_type}}">{{$t->payroll_type_name}}</option>
-                          @endforeach
-                        </select>
-                      </div>
+                 
                       <div class="mb-3">
                         <label class="form-label" for="photo_employee">Fotos de la persona Maximo permitdo 2MB</label>
                         <input class="form-control" id="photo_employee" name="photo_employee" type="file" />
                       </div>
+                      @if(isset($Employee))                     
+                        <div class="border-dashed-bottom my-3"></div>
+                        <h6>Planillas que pertenece </h6>
+                        @foreach($PayrollTypes as $t)
+                          <div class="form-check custom-checkbox mb-0">
+                            <input class="form-check-input" type="checkbox" data-payroll-type="{{$t->id_payroll_type}}" 
+                                  @if(isset($Employee->ListPayrollType))
+                                      @php
+                                        $found = false;
+                                        foreach ($Employee->ListPayrollType as $payrollType) {
+                                          if ($payrollType['payrolls_id'] == $t->id_payroll_type) {
+                                            $found = true;
+                                            break;
+                                          }
+                                        }
+                                      @endphp
+                                      @if($found) checked="checked" @endif
+                                  @endif />
+                            <label class="form-label mb-0"><strong>{{$t->payroll_type_name}}</strong></label>
+                            <div class="form-text mt-0">UNIDAD DE NEGOCIO</div>
+                          </div>
+                        @endforeach
+                      @endif
+                      
 
-                      <div class="border-dashed-bottom my-3"></div>
-                      <div class="form-check mb-0 lh-1">
-                        <input class="form-check-input" type="checkbox" id="userSettings1" checked="checked" />
-                        <label class="form-check-label mb-0" for="userSettings1">Allow users to show your followers
-                        </label>
-                      </div>
-                      <div class="form-check mb-0 lh-1">
-                        <input class="form-check-input" type="checkbox" id="userSettings2" checked="checked" />
-                        <label class="form-check-label mb-0" for="userSettings2">Allow users to show your email
-                        </label>
-                      </div>
-                      <div class="form-check mb-0 lh-1">
-                        <input class="form-check-input" type="checkbox" id="userSettings3" />
-                        <label class="form-check-label mb-0" for="userSettings3">Allow users to show your experiences
-                        </label>
-                      </div>
+            
               
                     </div>
                     <div class="card-footer">

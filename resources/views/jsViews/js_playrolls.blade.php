@@ -1,5 +1,6 @@
 <script type="text/javascript">
 $(document).ready(function () {
+ 
     var Selectors = {
         MODAL_REQUEST: '#modal_new_request',        
     };
@@ -21,10 +22,8 @@ $(document).ready(function () {
     $('#date_ini').change(function() {
         CalcDiffDay()
     });
-    $('#date_end').change(function() {
-        CalcDiffDay()
-    });
 
+   
     $("#btn_save_request").click(function(){
             
             var employee  = $("#list_employee option:selected").val();  

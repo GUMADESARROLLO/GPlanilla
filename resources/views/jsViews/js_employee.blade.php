@@ -5,7 +5,7 @@
     $('#txt_email').inputmask({
         alias: 'email'
     });
-    $('.js-example-basic-single').select2();
+
 
     var Selectors = {
         TABLE_SETTING: '#modal_new_product',
@@ -19,6 +19,17 @@
    
     $(document).ready(function () {
         var labelRange = startOfMonth + " to " + endOfMonth;
+
+        $('.form-check-input').on('click', function() {
+        
+            var isChecked   = $(this).prop('checked');
+            var payrollType = $(this).data('payroll-type');
+            var id_employee = $("#txt_employee").val();
+            console.log(payrollType)
+
+            SendData(id_employee,payrollType,isChecked)
+        });
+
 
         $('#id_range_select').val(labelRange);
 
@@ -61,6 +72,26 @@
 
         initTable('#tbl_employee');
     });
+
+    function SendData(Employee,PayrollType,isChecked) {
+        $.ajax({
+            url: '../EmployeeTypePayroll',
+            data: {
+                Employee_       : Employee,
+                PayrollType_    : PayrollType,
+                isChecked_      : isChecked,
+                _token  : "{{ csrf_token() }}" 
+            },
+            type: 'post',
+            async: true,
+            success: function(response) {
+            
+            },
+            error: function(response) {
+                
+            }
+        });
+    }
     function Editar(id) {
         window.location ="EditEmployee/" + id
     }
@@ -114,7 +145,7 @@
 
     }
 
-  
+    
     function OpenModal(Articulo,Event){
         
         var HeaderArticulo = Articulo.DESCRIPCION 

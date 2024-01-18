@@ -47,5 +47,7 @@ Route::post('SaveRequest', 'RequestsController@SaveRequest')->name('SaveRequest'
 
 
 Route::get('Playrolls', 'PlayrollsController@getPlayrolls')->name('Playrolls');
+Route::post('SavePayroll', 'PlayrollsController@SavePayroll')->name('SavePayroll');
+Route::post('EmployeeTypePayroll', 'PlayrollsController@EmployeeTypePayroll')->name('EmployeeTypePayroll');
 
 
