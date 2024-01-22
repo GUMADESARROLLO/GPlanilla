@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 @section('metodosjs')
-@include('jsViews.js_playrolls')
+@include('jsViews.js_payrolls')
 @endsection
 @section('content')
 
@@ -61,7 +61,7 @@
 
                                       </div>
                                       <div class="flex-1 ms-3">
-                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="EditEmployee/{{$p->id_playrolls}}">CODIGO DE NOMINA</a></h6>
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="EditPayrolls/{{$p->id_payrolls}}">CODIGO DE NOMINA</a></h6>
                                           <p class="text-500 fs--2 mb-0">{{$p->Company->company_name}} |  {{$p->Type->payroll_type_name}}</p>
                                       </div>
                                       </div>

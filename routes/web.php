@@ -46,8 +46,9 @@ Route::post('UpdateRequest', 'RequestsController@UpdateRequest')->name('UpdateRe
 Route::post('SaveRequest', 'RequestsController@SaveRequest')->name('SaveRequest');
 
 
-Route::get('Playrolls', 'PlayrollsController@getPlayrolls')->name('Playrolls');
-Route::post('SavePayroll', 'PlayrollsController@SavePayroll')->name('SavePayroll');
-Route::post('EmployeeTypePayroll', 'PlayrollsController@EmployeeTypePayroll')->name('EmployeeTypePayroll');
+Route::get('Payrolls', 'PayrollsController@getPayrolls')->name('Payrolls');
+Route::post('SavePayroll', 'PayrollsController@SavePayroll')->name('SavePayroll');
+Route::post('EmployeeTypePayroll', 'PayrollsController@EmployeeTypePayroll')->name('EmployeeTypePayroll');
+Route::get('EditPayrolls/{id_employee}', 'PayrollsController@EditPayrolls')->name('EditPayrolls/{id_employee}');
 
 

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class Payroll extends Model {
     protected $table = "tbl_payrolls";
     protected $connection = 'mysql';
+    protected $primaryKey = 'id_payrolls';
     public function Company()
     {
         return $this->belongsTo(Company::class, 'company_id','id_compy');
@@ -22,6 +23,10 @@ class Payroll extends Model {
     public function Type()
     {
         return $this->belongsTo(PayrollType::class, 'payroll_type_id','id_payroll_type');
+    }
+    public function PayrollEmploye()
+    {
+        return $this->hasMany(PayrollEmploye::class, 'payrolls_id','payroll_type_id');
     }
 
     public static function SavePayroll(Request $request)

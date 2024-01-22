@@ -14,13 +14,13 @@ use Jenssegers\Date\Date;
 
 use Illuminate\Support\Facades\Auth;
 
-class PlayrollsController extends Controller {
+class PayrollsController extends Controller {
     public function __construct()
     {
         Date::setLocale('es');
         $this->middleware('auth');
     }
-    public function getPlayrolls()
+    public function getPayrolls()
     {        
 
         $Company = Company::where('active',1)->get();  
@@ -39,6 +39,14 @@ class PlayrollsController extends Controller {
         $response = Payroll::SavePayroll($request);
         return response()->json($response);
     }
+    public function EditPayrolls($Id){
+        $Payrolls = Payroll::where('id_payrolls',$Id)->first();
+
+        $Employes = $Payrolls->PayrollEmploye;
+        
+        return view('Payroll.EditPayroll',compact('Employes'));
+    }
+
     public function EmployeeTypePayroll(Request $request)
     {        
         $response = Payroll::EmployeeTypePayroll($request);

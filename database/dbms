@@ -28,6 +28,7 @@ Table tbl_payrolls{
   end_date date
   inss_patronal decimal(10.4)
   Inatec decimal(10,4)
+  observation varchar(500)
   user_id int (10)
   created_at datetime
   updated_at datetime 
@@ -41,9 +42,18 @@ Table tbl_payroll_status{
     3 = Pagado
     4 = Cerrado
     ']
-    created_at datetime
+  status_color varchar(25)
+  status_icon varchar(25)
+  created_at datetime
   updated_at datetime
 }
+
+Table tbl_employe_payroll{
+  employee_id int (10) [ref: > tbl_employee.id_employee] 
+  payrolls_id int(25) [ref: > tbl_payrolls.id_payrolls] 
+}
+
+
 Table tbl_payroll_type{
   id_payroll_type int (10) [pk, increment]
   payroll_type_name varchar(25)

@@ -30,7 +30,7 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="documentations">Nóminas</a>
                 <div class="dropdown-menu dropdown-menu-card border-0 mt-0" aria-labelledby="documentations">
                   <div class="bg-white dark__bg-1000 rounded-3 py-2">
-                    <a class="dropdown-item link-600 fw-medium" href="{{ route('Playrolls') }}">Listas</a>
+                    <a class="dropdown-item link-600 fw-medium" href="{{ route('Payrolls') }}">Listas</a>
                 
                   </div>
                 </div>

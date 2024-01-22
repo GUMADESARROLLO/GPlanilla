@@ -10,4 +10,8 @@ class PayrollEmploye extends Model {
     protected $table = "tbl_employe_payroll";
     protected $connection = 'mysql';
     public $timestamps = false;
+    public function Employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id','id_employee');
+    }
 }

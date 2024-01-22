@@ -181,27 +181,7 @@
 
     }
 
-    function SendData(Nombre,Modelo,UND) {
-        $.ajax({
-            url: "AddCatalogo",
-            data: {
-                Nombre_: Nombre,
-                Modelo_: Modelo,
-                UND_ : UND,
-                _token  : "{{ csrf_token() }}" 
-            },
-            type: 'post',
-            async: true,
-            success: function(response) {
-                swal("Exito!", "Guardado exitosamente", "success");
-            },
-            error: function(response) {
-                swal("Oops", "No se ha podido guardar!", "error");
-            }
-        }).done(function(data) {
-            location.reload();
-        });
-    }
+     
     function UpdateData(Nombre,Modelo,ID,Select) {
         $.ajax({
             url: "UpdateCatalogo",
