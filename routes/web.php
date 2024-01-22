@@ -50,5 +50,6 @@ Route::get('Payrolls', 'PayrollsController@getPayrolls')->name('Payrolls');
 Route::post('SavePayroll', 'PayrollsController@SavePayroll')->name('SavePayroll');
 Route::post('EmployeeTypePayroll', 'PayrollsController@EmployeeTypePayroll')->name('EmployeeTypePayroll');
 Route::get('EditPayrolls/{id_employee}', 'PayrollsController@EditPayrolls')->name('EditPayrolls/{id_employee}');
+Route::get('IngresosEgresos/{id_employee}/{id_payroll}', 'PayrollsController@IngresosEgresos')->name('IngresosEgresos/{id_employee}/{id_payroll}');
 
 

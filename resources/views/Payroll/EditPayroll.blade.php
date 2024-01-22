@@ -57,10 +57,10 @@
                   </thead>
                   <tbody>
                     @foreach($Employes as $p)
-                          
                     <tr>
                       <td class="align-middle">
-                        <h6 class="mb-0 text-nowrap">{{$p->Employee->first_name}}  {{$p->Employee->last_name}}  </h6>
+                      <a class=" text-900" href="../IngresosEgresos/{{$IdPayRoll}}/{{$p->employee_id}}"><h6 class="mb-0 text-nowrap">
+                          {{$p->Employee->first_name}}  {{$p->Employee->last_name}}  </h6></a>
                         <p class="mb-0">{{$p->Employee->Position->position_name}}</p>
                       </td>
                       <td class="align-middle text-center">{{$p->Employee->cedula_number}}</td>

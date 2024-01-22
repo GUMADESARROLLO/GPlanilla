@@ -33,6 +33,30 @@ Table tbl_payrolls{
   created_at datetime
   updated_at datetime 
 }
+
+Table tbl_Ingresos_Egresos {
+  id_Ingresos_Egresos int [pk, increment]
+  payrolls_id int(25) [ref: > tbl_payrolls.id_payrolls]
+  cantHorasExt int(10)
+  montoHorasExt decimal(10,4)
+  ingGravable decimal(10,4)
+  ingNoGravable decimal(10,4)
+  cantHorasDeducir int(10)
+  montoHorasDeducir decimal(10,4)
+  deduccionesVarias decimal(10,4)
+  inss decimal(10,4)
+  ir decimal(10,4)
+  totalDeducciones decimal(10,4)
+  cantVacDesc int(10)
+  montoVacDesc decimal(10,4)
+  diasSubMaternidad int(10)
+  montoSubMaternidad decimal(10,4)
+  diasSubsidio int(10)
+  diasLaborados int(10)
+  reposoLaboral int(10)
+  salarioOrdinario decimal(10,4)
+}
+
 Table tbl_payroll_status{
   id_payroll_status int (10) [pk, increment]
   payroll_status_name varchar(25)  [

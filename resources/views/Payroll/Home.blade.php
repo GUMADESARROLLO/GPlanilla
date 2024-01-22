@@ -27,7 +27,7 @@
                   <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel"  id="id_tab_requests">
 
-                      <div id="table" data-list='{"valueNames":["path"],"page":5,"pagination":true,"fallback":"pages-table-fallback"}'>
+                      <div id="table" data-list='{"valueNames":["path"],"page":10,"pagination":true,"fallback":"pages-table-fallback"}'>
                         <div class="row flex-between-center">
                           <div class="col-auto col-sm-12 col-lg-12 mb-3">
                             <div class="input-group">
@@ -51,17 +51,14 @@
                                 </tr>
                               </thead>
                               <tbody class="list">
-
+                                
                                 @foreach($Payrolls as $p)
                                 <tr class="btn-reveal-trigger">                                  
                                   <td class="align-middle white-space-nowrap path">
                                       <div class="d-flex align-items-center position-relative">
-                                      <div class="avatar avatar-3xl ">
-                                          <img class="rounded-circle" src="/images/user/avatar-4.jpg" />
-
-                                      </div>
-                                      <div class="flex-1 ms-3">
-                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="EditPayrolls/{{$p->id_payrolls}}">CODIGO DE NOMINA</a></h6>
+                                     
+                                      <div class="flex-1">
+                                          <h6 class="mb-0 fw-semi-bold"><a class="stretched-link text-900" href="EditPayrolls/{{$p->id_payrolls}}">1Q-Jun-00</a></h6>
                                           <p class="text-500 fs--2 mb-0">{{$p->Company->company_name}} |  {{$p->Type->payroll_type_name}}</p>
                                       </div>
                                       </div>
@@ -81,6 +78,7 @@
                                   </td>
                                 </tr>
                                 @endforeach    
+                                
                               </tbody>
                             </table>
                           </div>
